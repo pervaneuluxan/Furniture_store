@@ -1,0 +1,381 @@
+
+.header{
+    background-color:rgba(255,255,255);
+    height: 96px;
+    z-index: 3000;
+}
+.fixed-header{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+}
+.header_in{
+    vertical-align: middle;
+}
+.logo_link{
+    width: 107px;
+    color:#080808;
+    font-size: 25px;
+    font-family: 'Catamaran-ExtraBold';
+    letter-spacing: 9px;
+}
+.logo_link:hover{
+    text-decoration: none;
+    color: #080808;
+}
+.main_nav_menu li:not(:last-child){
+    margin-right: 15px;
+}
+.desktop_nav{
+    vertical-align: middle;
+}
+.main_nav_menu{
+    vertical-align: middle;
+}
+.main_nav_menu li{
+    width: 70px;
+    position: relative;
+    cursor: pointer;
+    text-align: center; 
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main_nav_menu li:last-child{
+    width: 140px;
+}
+.main_nav_menu li a{
+    position: relative;
+    width: 100%;
+    vertical-align: middle;
+    height: 100%;
+    color: #080808;
+    font-size: 12px;
+    line-height: 23px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-family: 'Catamaran-Bold';
+    transition: all .3s;
+    display: flex;
+    align-items: center;
+}
+.active_link{
+    color:#929292!important;
+}
+.main_nav_menu li:hover a{
+    color: #929292;
+}
+.desktop_right_list li:not(:last-child){
+    margin-right: 20px;
+}
+.desktop_right_list li{
+    position: relative;
+    height: 100%;
+}
+.desktop_right_list li a:not(.cart_dropdown a),
+.desktop_right_list li .lang_menu{
+    color: #080808;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: 'Catamaran-Bold';
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.desktop_right_list li .lang_menu{
+    padding: 39px 5px;
+}
+.desktop_right_list li span{
+    font-size: 12px;
+    font-family: 'Catamaran-Bold';
+}
+.cart{
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
+    height: 100%;
+}
+.cart a span,
+.fav_link a span{
+    font-size: 12px;
+    color: #929292;
+    font-family:'Montserrat-Regular';
+}
+.cart_dropdown{
+    position: absolute;
+    font-weight: 100;
+    font-size: 16px;
+    color: #fff;
+    top: 100%;
+    left: auto;
+    right: 0;
+    width: 231px;
+    background-color: #111;
+    text-align: left;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    padding: 25px;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.empty_cart{
+    font-size: 14px;
+    color: #929292;
+}
+.cart_dropdown li{
+    width: 100%;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    margin-right: 0!important;
+}
+.cart_dropdown li:not(.cart_dropdwon_bottom_list){
+    margin-bottom: 24px;
+}
+.cart_dropdown li a:not(.cart_dropdwon_bottom_list a){
+    padding: 0;
+    display: block;
+    margin: 0;
+    box-sizing: border-box;
+    color: #fff;
+    letter-spacing: .1em;
+    line-height: 20px;
+    position: relative;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: 'Catamaran-Light';
+}
+.cart_dropdown li .product_img{
+    width: 43px;
+    height: 53px;
+    object-fit: cover;
+}
+.cart_dropdown_product_info{
+    height: 100%;
+    width: calc(100% - 43px);
+    padding-left: 10px;
+    float: left;
+}
+.cart_dropdown_product_info .product_title{
+    display: block;
+    margin: 0;
+    padding: 0 20px 0 0;
+    box-sizing: border-box;
+    color: #fff;
+    font-family: 'Catamaran-Light';
+    letter-spacing: .1em;
+    line-height: 22px;
+    position: relative;
+    font-size: 14px;
+}
+.cart_dropdown_product_info .product_qty,
+.cart_dropdown_product_info .product_price{
+    font-family:'Montserrat-Light';
+    font-size: 11px;
+    display: inline-block;
+    color: #a5a5a5;
+    vertical-align: middle;
+    line-height: 11px;
+    position: relative;
+}
+.cart_dropdown_product_info .product_qty{
+    margin-right: 5px;
+}
+.cart_dropdown li .product_remove_btn{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: 'Catamaran-Light';
+    font-size: 12px;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.cart_dropdown li .product_remove_btn:hover{
+    color: #929292;
+}
+.cart_total{
+    margin-top: 20px;
+}
+.cart_total span:first-child{
+    line-height: 20px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+.cart_total span:nth-child(2){
+    font-family: 'Montserrat-Regular';
+    text-align: right;
+    font-size: 12px;
+   
+}
+.cart_dropdwon_bottom_list:not(.cart_total){
+    margin-top: 5px!important;
+    margin-bottom: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}.view_cart{
+    background-color: transparent;
+    border: 1px solid #505050;
+    -webkit-transition: border-color .3s ease;
+    -moz-transition:border-color .3s ease;
+    transition: border-color .3s ease;
+}
+.view_cart:hover{
+    border-color: #fff;
+}
+.checkout{
+    color: #fff;
+    background-color: #2e2e2e;
+    -webkit-transition: background-color .3s ease;
+    -moz-transition:background-color .3s ease;
+    transition: background-color .3s ease;
+}
+.checkout:hover{
+    background-color: #525252;
+}
+.cart_dropdwon_bottom_list a{
+    height: 34px;
+    line-height: 34px;
+    font-size: 9px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+}
+.cart:hover > .cart_dropdown{
+   opacity: 1;
+   visibility: visible;
+}
+.login_open_btn{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #080808;
+}
+.fa-user{
+    margin-right: 5px;
+}
+.login_main,
+.register_main{
+    position:fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: rgb(0, 0, 0,.5);
+    transition: all .3s;
+    display: none;
+}
+.deactive_box{
+    display: none;
+}
+.login_box,.register_box{
+    width: 300px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 1300;
+}
+.login_box{
+    height: 380px;
+}
+.register_box{
+    height: 420px;
+}
+.login_box div,
+.register_box div{
+    background-color: white;
+}
+.login_box div button,
+.register_box div button{
+    color: #080808;
+    display: inline-block;
+    font-size: 14px;
+    line-height: inherit;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    width: 150px;
+    height: 50px;
+    text-decoration: none;
+    text-align: center;
+    padding:15px;
+    background-color: transparent;
+}
+.login_box div a.active,
+.register_box div a.active{
+    background-color: #f8f8f8;
+}
+.login_box ul,.register_box ul{
+    background-color: white;
+    padding:30px;
+    display: flex;
+    flex-direction: column;
+}
+.form_input{
+    width: 240px;
+    height: 50px;
+    padding:15px 20px;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: inherit;
+    color: #929292;
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    margin: 0 0 14px;
+}
+.submit_input{
+    width: 240px;
+    height: 50px;
+    padding:15px 20px;
+    font-size: 13px;
+    background-color: #080808;
+    color: #fff;
+    border: 2px solid transparent;
+    letter-spacing: .15em;
+    font-weight: 700;
+    transition: all .3s;
+}
+.submit_input:hover{
+    background-color: #252525;
+}
+.check_input{
+    -webkit-appearance:auto;
+}
+.check_input + label{
+    margin-left: 5px;
+    font-size: 13px;
+}
+.login_box ul li a,.login_box ul li span{
+    color: #666;
+    font-size: 13px;  
+}
+.login_box ul li a{
+    margin: 30px 0 15px 0;
+    text-transform: none;
+    transition: all .3s;
+}
+.login_box ul li a:hover{
+    color: #080808;
+}
+

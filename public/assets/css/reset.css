@@ -1,0 +1,133 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    border:none;
+    outline: none;
+}
+html,
+body{
+    width: 100%;
+    height: 100%;
+}
+html{
+    scroll-behavior: smooth;
+}
+a,span{
+    display: inline-block;
+}
+a{
+    text-decoration: none!important;
+}
+ul li,
+ol li{
+    list-style-type: none;
+    position: relative;
+    float: left;
+}
+.no_animation{
+    animation: unset;
+}
+.flex{
+    display: flex;
+}
+.direction_column{
+    flex-direction: column;
+}
+.justify_flex_start{
+    justify-content: flex-start;
+}
+.justify_flex_end{
+    justify-content: flex-end;
+}
+.justify_center{
+    justify-content: center;
+}
+.justify_space_between{
+    justify-content: space-between;
+}
+.justify_space_around{
+    justify-content: space-around;
+}
+.align_flex_start{
+    align-items: flex-start;
+}
+.align_flex_end{
+    align-items: flex-end;
+}
+.align_center{
+    align-items: center;
+}
+.align_stretch{
+    align-items: stretch;
+}
+.align_baseline{
+    align-items: baseline;
+}
+.flex_nowrap{
+    flex-wrap: nowrap;
+}
+.flex_wrap{
+    flex-wrap: wrap;
+}
+.flex_wrap_reverse{
+    flex-wrap: wrap-reverse;
+}
+.align_content_flex_start{
+    align-content: flex-start;
+}
+.align_content_flex_end{
+    align-content: flex-end;
+}
+.align_content_center{
+    align-content: center;
+}
+.align_content_space_between{
+    align-content: space-between;
+}
+.align_content_space_around{
+    align-content: space-around;
+}
+.align_content_stretch{
+    align-content: stretch;
+}
+/* input:not([type="radio,checkbox"]),
+button,
+select{
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+} */
+select,button{
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+button{
+    cursor: pointer;
+}
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+.fixed{
+    position: fixed;
+}
+.sticky{
+    position: sticky;
+}
+.full_width{
+    position: relative;
+    float: left;
+    width: 100%;
+}
+.full_height{
+    height:100%
+}
+.center{
+    position: relative;
+    margin:0 auto;
+    float:none;
+}

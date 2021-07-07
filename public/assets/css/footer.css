@@ -1,0 +1,88 @@
+
+.footer{
+    background-color: #080808;
+}
+.footer_menu_list{
+    margin-top: 120px;
+}
+
+.footer_menu_list li{
+    width: calc(100%/4);
+    display: flex;
+    flex-direction: column;
+    height: 206px;
+}
+.footer_menu_list li h4{
+    letter-spacing: .1em;
+    color: #fafafa;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: -8px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    
+}
+.footer_menu_list li a{
+    color: #fafafa;
+    font-family: 'Catamaran-ExtraLight';
+    font-size: 14px;
+    transition: all .5s;
+    position: relative;
+    line-height: 18px;
+    margin-bottom: 10px;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing:antialiased;
+    font-smooting:antialiased;
+}
+.footer_menu_list li a::after{
+    content: "\e87a";
+    font-family: Linearicons-Free;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    display: inline-block;
+    font-size: 13px;
+    left: -10px;
+    line-height: 13px;
+    position: absolute;
+    top: 4px;
+    vertical-align: middle;
+    opacity: 0;
+    transition: all .2s;
+}
+.footer_menu_list li a:hover::after{
+   opacity: 1;  
+}
+.footer_menu_list li a:hover{
+    text-decoration: none;
+    padding-left: 5px;
+}
+.line{
+    width: 100%;
+    border-top:1px solid rgba(206,206,206,.2);
+}
+.footer_bottom p{
+    margin-top: 20px;
+    color: #929292;
+    font-size: 12px;
+}
+.footer_social_links li{
+    margin-right: 20px;
+}
+.footer_social_links li span{
+    color: white;
+    font-size: 12px;
+    font-weight: 200;
+    text-transform: capitalize;
+}
+.footer_social_links li a i{
+    font-size: 12px;
+    color: white;
+    -webkit-transition: color .15s ease-in-out;
+    -moz-transition: color .15s ease-in-out;
+    transition: color .15s ease-in-out;
+}
+.footer_social_links li a i:hover{
+    color: #929292;
+}

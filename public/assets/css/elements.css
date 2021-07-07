@@ -1,0 +1,118 @@
+/* Back to top button */
+.back_to_top{
+    position: fixed;
+    right: 25px;
+    bottom: 90px;
+    z-index: 10000;
+    width: 39px;
+    height: 39px;
+    line-height: 40px;
+    font-size: 15px;
+    text-align: center;
+    color: #fff!important;
+    background-color: #080808;
+    -webkit-transition:all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.back_to_top:hover{
+    background-color: rgb(31, 31, 31);
+}
+.back_to_top:not(.active_btn){
+    visibility: hidden;
+    opacity: 0;
+} 
+/* Mobile menu Button */
+.mobile_nav_btn{
+    display: none;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: 'Catamaran-Bold';
+    letter-spacing: 2px;
+    color: #080808;
+    height: 100%;
+}
+.mobile_nav_btn i{
+    margin-left: 5px;
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+/* Mobile Menu */
+.nav_mobile_box{
+    position: fixed;
+    left: 0;
+    top:0;
+    height: 100vh;
+    background-color: transparent;
+    z-index: 5000;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    transform: translateX(100%);
+    display: none;
+}
+.nav_mobile_box.show{
+    display: block;
+}
+.nav_mobile_box.active_menu{
+    transform: translateX(0);
+}
+.nav_mobile_box_in{
+    width:300px;
+    background-color: #111111;
+    float: right;
+}
+.nav_mobile_close_btn{
+    position:absolute;
+    top: 30px;
+    left: 250px;
+    color: #fff;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    position: relative;
+    text-align: center;
+    z-index: 1000;
+    cursor: pointer;
+    background-color: transparent;
+}
+.nav_mobile_close_btn i{
+    font-size: 20px;
+}
+.nav_mobile_in{
+    padding: 30px 70px 121px;
+}
+.mobile_nav_list{
+    padding-top: 10%;
+}
+.mobile_nav_list li a{
+    display: inline-block;
+    padding: 11px 0;
+    margin: 0;
+    color:#fff;
+    font-size: 23px;
+    font-weight: 400;
+    text-transform: uppercase;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.mobile_nav_list li a:hover{
+   color: #fff;
+}
+.active_mobile_link{
+    color: #fff;
+}

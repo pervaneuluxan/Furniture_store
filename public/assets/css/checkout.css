@@ -1,0 +1,381 @@
+@import url('reset.css');
+@import url('header.css');
+@import url('footer.css');
+@import url('font.css');
+@import url('elements.css');
+
+*::selection{
+   color: white;
+   background-color: #080808;
+}
+body{
+    font-family: 'Catamaran', sans-serif;
+    min-height: 100vh;
+}
+
+.center{
+    width: 1100px;
+}
+.parallax{
+    height: 325px;
+    background-image: url('images/cart_parallax_bcg.jpg');
+    background-position:unset;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.parallax h1{
+    color: white;
+    font-size: 55px;
+    text-transform: uppercase;
+    font-family: 'Catamaran-Medium';
+    letter-spacing: 2px;
+}
+.customer_info{
+    padding-top: 110px;
+    background-color: #fff;  
+}
+.customer_login,
+.customer_coupon{
+    padding: 15px 30px;
+    margin: 0 0 30px;
+    line-height: 48px;
+    list-style: none;
+    background-color: transparent;
+    border: 1px solid #e1e1e1;
+}
+.customer_login span,
+.customer_login button,
+.customer_coupon span,
+.customer_coupon button{
+    font-family:'Catamaran-Light';
+    font-size: 16px;
+    color: #929292;
+}
+.customer_login button,
+.customer_coupon button{
+   background-color: transparent;
+   border: none;
+   outline: none;
+}
+.login_form{
+    display: none;
+}
+.login_form p,
+.coupon_form p{
+    margin: 0 0 15px;
+    font-family:'Catamaran-Light';
+    font-size: 16px;
+    color: #929292;
+}
+.login_form_list li .input_lable{
+    color: #080808;
+    font-size: 16px;
+    font-family: 'Catamaran-Medium';
+    margin-bottom: 4px;
+    display: block;
+}
+.login_form_list li .check_lable{
+    color: #080808;
+    font-size: 16px;
+    font-family: 'Catamaran-Medium';
+    margin-bottom: 4px;
+    display: inline-block;
+}
+.login_form_list li .input_text,
+.coupon_form_list li .input_text{
+    width: 100%;
+    margin: 0 0 14px;
+    padding: 15px 20px;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: inherit;
+    color: #929292;
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    outline: 0;
+    height: 50px;
+}
+.login_form_list li .input_text:focus,
+.coupon_form_list li .input_text:focus{
+    background-color: whitesmoke;
+}
+.login_form_list li .login_btn{
+    height: 38px;
+    line-height: 38px;
+    padding: 0 28px;
+    letter-spacing: .15em;
+    font-family: 'Catamaran-Bold';
+    text-transform: uppercase;
+    color: #fff;
+    -webkit-transition: color .2s ease-in-out,background-color .2s ease-in-out,border-color .2s ease-in-out;
+    -moz-transition: color .2s ease-in-out,background-color .2s ease-in-out,border-color .2s ease-in-out;
+    transition: color .2s ease-in-out,background-color .2s ease-in-out,border-color .2s ease-in-out;
+    font-size: 12px;
+    background-color: #080808;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+.login_form_list li a{
+    display: block;
+    margin: 15px 0 0;
+    color: #080808;
+    font-size: 16px;
+}
+.coupon_form{
+    display: none;
+}
+.coupon_form p{
+    margin-bottom: 0px!important;
+}
+.coupon_form_list li .apply_btn{
+    width: auto;
+    outline: 0;
+    line-height: 30px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    margin: 0;
+    -webkit-transition: color .2s ease-in-out,background-color .2s ease-in-out,border-color .2s ease-in-out;
+    -moz-transition: color .2s ease-in-out,background-color .2s ease-in-out,border-color .2s ease-in-out;
+    transition: color .2s ease-in-out,background-color .2s ease-in-out,border-color .2s ease-in-out;
+    font-size: 12px;
+    color: #fff;
+    background-color: #080808;
+    border: 2px solid transparent;
+    padding: 7px 46px;
+    cursor: pointer;
+    z-index: 3;
+    border-radius: 0;
+}
+.coupon_form_list li .apply_btn:hover{
+    background-color: #444;
+}
+.billing_details_in_left{
+    width: 49%;
+    margin-right: 1%;
+}
+.billing_details_in_left h3{
+    margin: 8px 0 25px;
+    font-size: 24px;
+    font-family: 'Catamaran-Bold';
+    line-height: 36px;
+    letter-spacing: 2px;
+    color: #080808;
+    text-transform: uppercase;
+}
+.address_change_form_list{
+    margin-top: 12px;
+    display: none;
+}
+.billing_details_form_list li,
+.address_change_form_list li{
+    width: 100%;
+}
+.billing_details_form_list li label,
+.address_change_form_list li label,
+.address_change_form label:not(.checkbox_lable){
+    color: #080808;
+    font-size: 16px;
+    font-family: 'Catamaran-Medium';
+    text-transform: capitalize;
+    line-height: 1.5;
+    letter-spacing: 0;
+}
+.billing_details_form_list li label:not(.checkbox_lable),
+.address_change_form_list li label:not(.checkbox_lable),
+.address_change_form label:not(.checkbox_lable){
+    display: block;
+    margin: 0 0 5px;
+}
+.billing_details_form_list li .input_text,
+.address_change_form_list li .input_text,
+.address_change_form .input_text{
+    margin: 0 0 14px;
+    padding: 15px 20px;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 18px;
+    font-family: 'Catamaran-Light';
+    color: #929292;
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    outline: 0;
+    height: 50px;
+    border-radius: 0;
+    width: 100%;
+}
+.billing_details_form_list li p,
+.address_change_form_list li p{
+    width: 49%;
+    margin-right: 10px;
+}
+.billing_details_form_list li .second_p,
+.address_change_form_list li .second_p{
+   margin-right: 0!important;
+}
+.billing_details_form_list li p .input_text1,
+.address_change_form_list li p.input_text1{
+    width: 100%;
+    margin-right: 10px;
+    margin: 0 0 14px;
+    padding: 15px 20px;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 18px;
+    font-family: 'Catamaran-Light';
+    color: #929292;
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    outline: 0;
+    height: 50px;
+    border-radius: 0; 
+}
+.billing_details_form_list li.checkbox{
+    display: inline-block;
+}
+.billing_details_form_list li .toggle_text{
+    display: none;
+}
+.billing_details_form_list li .checkbox:checked +label +.toggle_text{
+    display: block;
+}
+.address_change_form .checkbox:checked +label +.address_change_form_list{
+    display: block;
+}
+.billing_details_in_left li p .password_input{
+    margin: 0 0 14px;
+    padding: 15px 20px;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 18px;
+    font-family: 'Catamaran-Light';
+    color: #929292;
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    height: 50px;
+    width: 264px;
+}
+.billing_details_in_right{
+    width: 49%;
+    margin-left: 1%;
+}
+.notes_area_lable{
+    margin-top: 20px;
+}
+.address_change_form .checkbox,
+.address_change_form,.check_lable{
+    display: inline-block;
+    color: #080808;
+    font-size: 15px;
+    text-transform: uppercase;
+    line-height: 36px;
+    letter-spacing: 2px;
+    margin-top: 8px;
+    margin-bottom: 25px;
+    line-height: 36px;
+    letter-spacing: 2px;
+}
+.address_change_form .checkbox:checked +label +.address_change_form_list{
+    display: block;
+}
+.order_details_in h3{
+    width: 100%;
+    margin-bottom: 18px;
+    font-size: 24px;
+    line-height: 36px;
+    /* letter-spacing: 2px; */
+    color: #080808;
+    text-transform: uppercase;
+    font-family: 'Catamaran-Bold';
+}
+.order_details_in table{
+    padding: 0;
+    margin: 0 0 35px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    vertical-align: middle;
+    width: 100%;
+    font-family: 'Catamaran-Light';
+    font-size: 16px;
+    color: #929292;
+}
+.order_details_in table tr{
+    border: 0;
+    border-bottom: 1px solid #e1e1e1;
+}
+.order_details_in table th{
+    padding: 15px 0;
+    text-align: left;
+    vertical-align: middle;
+    width: 63.3%; 
+}
+.order_details_in table td{
+    padding: 14px 0;
+    text-align: left;
+    vertical-align: middle;
+}
+.order_details_in table td strong{
+    margin-left: 10px;
+}
+.shipping_list li label{
+    font-size: 14px;
+    color: #929292;
+    font-weight: 300;
+}
+.payment_methods{
+    display: block;
+    margin: 20px 0 110px;
+}
+.payment_methods ul li{
+    padding: 14px 0;
+    border: 1px solid #e1e1e1;
+    list-style: none;
+    background-color: transparent;
+    margin-bottom: 30px;
+    font-family: 'Catamaran-Light';
+    line-height: 48px;
+    font-size: 16px;
+    color: #929292;
+    width: 100%;
+}
+.privacy_policy{
+    width: 100%;
+}
+.privacy_policy p{
+    font-family: 'Catamaran-Light';
+    line-height: 48px;
+    font-size: 16px;
+    color: #929292;
+    margin: 10px 0;
+}
+.privacy_policy p a{
+    color: #080808;
+    font-family: 'Catamaran-Regular';
+}
+.place_order_btn{
+    vertical-align: middle;
+    width: auto;
+    outline: 0;
+    line-height: 30px;
+    letter-spacing: .15em;
+    font-family: 'Catamaran-SemiBold';
+    text-transform: uppercase;
+    -webkit-transition: color .2s ease-in-out,background-color .2s ease-in-out,border-color .2s ease-in-out;
+    -moz-transition: color .2s ease-in-out,background-color .2s ease-in-out,border-color .2s ease-in-out;
+    transition: color .2s ease-in-out,background-color .2s ease-in-out,border-color .2s ease-in-out;
+    font-size: 12px;
+    color: #fff;
+    background-color: #080808;
+    border: 2px solid transparent;
+    padding: 7px 46px;
+    cursor: pointer;
+    margin: 0;
+    margin-bottom: 120px;
+}
+.place_order_btn:hover{
+    background-color: #444;
+}

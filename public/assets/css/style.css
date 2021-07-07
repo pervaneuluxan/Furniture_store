@@ -1,0 +1,221 @@
+@import url('reset.css');
+@import url('header.css');
+@import url('footer.css');
+@import url('font.css');
+@import url('elements.css');
+
+*{
+    font-family: 'Catamaran-Light';
+}
+html,body{
+    width: 100%;
+}
+*::selection{
+    color: #fff;
+    background-color: black;
+}
+/* HOME */
+.center{
+    width: 1219px;
+}
+
+/* SLIDER SECTION */
+.main{
+    min-height: 300vh;
+}
+.slider{
+   height: 481px;
+}
+.slider_in{
+    background-color: rgb(243, 243, 243);   
+}
+.slider_item{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+.slider_text{
+   position: absolute;
+   left: 150px;
+   top: 284px;
+   z-index: 3000;
+   opacity: 0;
+   transform: scale(1);
+   transition: all 1s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.slider_item:first-child img{
+    width: 931px;
+    height: 467px;
+    margin-right: -150px;
+}
+.slider_item:nth-child(2) img{
+    width: 700px;
+    height: 467px;
+    margin-right: -60px;
+}
+.slider_item:nth-child(3) img{
+    width: 1000px;
+    height: 467px;
+    margin-right: -140px;
+}
+.slick-active .slider_text{
+    opacity: 1;
+    transform: scale(1.2);
+}
+.slider_text h3{
+    font-size: 11px;
+    font-family:'Catamaran-Bold';
+    line-height: 23px;
+    color: rgb(8, 8, 8);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+.slider_text p{
+    max-width: 456px;
+    white-space: normal;
+    font-size: 20px;
+    line-height: 34px;
+    color: #929292;
+    font-family: 'Catamaran-ExtraLight';
+}
+.slider_item  img{
+    display: inline-block;
+    transition: all 1s cubic-bezier(0.7, 0, 0.3, 1);
+    transform: scale(.8);
+    width: 706.272px;
+    height: 487.303px;
+    float: right;
+    object-fit: contain;
+}
+.slick-active img{
+    transform: scale(1);
+}
+
+/* PRODUCT SECTION */
+
+.product{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.home_product_list{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: auto;
+    grid-gap: 50px;
+}
+.home_product_list li{
+    display: block;
+    overflow: hidden;
+    position: relative;
+    transition: all .5s;
+}
+.home_product_list li:nth-child(3){
+    grid-column: span 2;
+    grid-row: span 2;
+    width: 100%;
+    height: 100%;
+    order: 0;
+}
+.home_product_list li:nth-child(10){
+    grid-column: span 2;
+    grid-row: span 2;
+}
+.home_product_list li img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -moz-transition:transform .3s ease-in-out;
+    -webkit-transition: transform .3s ease-in-out;
+    transition:transform  .3s ease-in-out;
+}
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:rgba(255,255,255,0);
+    transition: all .3s;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    -moz-transition:all  .3s ease-in-out;
+    -webkit-transition: all  .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    display: none;
+}
+.overlay h5 {
+    color: #000000;
+    font-family: 'Catamaran-Bold';
+    font-size: 14px;
+    opacity: 1; 
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0;
+}
+.overlay .rating_icon i{
+    color: #000000;
+    opacity: 1;
+    font-size: 12px;
+}
+.overlay .new_price,
+.overlay .old_price del{
+    display: inline-block;
+    margin-top: 10px;
+    font-family: 'Montserrat-Light';
+    color: #999999;
+    font-size: 14px;
+    color: #000000;
+    font-weight:300;
+    font-size: 16px;
+    font-family: 'Montserrat-Light';
+}
+.overlay .product_old_price{
+    text-decoration: line-through;
+    display: inline-block;
+    color: #929292;
+    font-weight:300;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+.home_product_list li:hover .overlay{
+   background-color: rgba(255,255,255,.6);
+   display: flex;
+}
+.home_product_list li:hover img{
+    transform: scale(1.05);
+}
+.partners{
+    margin-top: 75px;
+    margin-bottom: 75px;
+}
+.partners h3{
+    text-align: center;
+    margin-bottom: 45px;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-family: 'Catamaran-SemiBold';
+}
+.partners-list li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.partners-list li img{
+    width: 225px;
+    height: 65px;
+}
+.partners-list li:not(:last-child){
+    margin-right: 35px;
+}
+
+
+
+

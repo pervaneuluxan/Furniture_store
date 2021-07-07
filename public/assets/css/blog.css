@@ -1,0 +1,149 @@
+@import url('reset.css');
+@import url('header.css');
+@import url('footer.css');
+@import url('font.css');
+@import url('elements.css');
+
+*::selection{
+  background-color: #000000;
+  color: #ffff;
+}
+*{
+    font-family: 'Catamaran-Regular';
+}
+html,
+body{
+    min-height:100vh;
+}
+.center{
+    width: 1100px;
+}
+.blog_header{
+    padding: 55px 0;
+}
+.blog_header_in{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.blog_header_in h5{
+    letter-spacing: 1px;
+    color: #080808;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: 'Catamaran-ExtraBold';
+    text-align: center;
+}
+.blog_header_in p{
+    width: 792px;
+    color: #080808;
+    font-size: 45px;
+    line-height: 58px;
+    font-family: 'Catamaran-Light';
+    text-align: center;
+    margin: 14px 0 0;
+}
+.blog_posts{
+    padding:95px 0 40px 0;
+}
+.posts_list li{
+    margin-right: 20px;
+    margin-bottom: 60px;
+    width: calc( (100% - 40px) /3);  
+}
+.posts_list li:nth-child(3n+3){
+    margin-right: 0px;
+}
+.posts_list li a img{
+    width: 347px;
+    height: 211px;
+    object-fit: cover;
+}
+.post_date{
+    display: block;
+    font-size: 12px;
+    letter-spacing: .1em;
+    line-height: 47px;
+    font-family: 'Catamaran-Bold';
+    color: #929292;
+    margin-top: 10px;
+}
+.post_title{
+    font-size: 16px;
+    font-family: 'Catamaran-ExtraBold';
+    color: #080808;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.post_title:hover{
+    color: #080808!important;
+}
+.post_content{
+    font-family: 'Catamaran-Light';
+    font-size: 16px;
+    color: #929292;
+    margin-right: 10px;
+}
+.posts_list a span{
+    color: #323232;
+    font-family: 'Catamaran-ExtraBold';
+    font-size: 12px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+}
+.posts_list a i{
+    font-size: 12px;
+    color: #323232;
+    margin-left: 5px;
+    vertical-align: baseline;
+    -moz-transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.posts_list a:hover i{
+    margin-left: 10px;
+}
+.pagination{
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+.pagination_list li{
+    margin-left: 25px;
+}
+.pagination_list li a{
+    font-size: 16px;
+    color: #929292;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.pagination_list li a:hover{
+    color: #080808;
+}
+.pagination_list li i{
+    font-size: 12px;
+}
+.pagination_list li.active_list a{
+    color: #080808;
+}
+/* Footer */
+.footer{
+    border-top: 1px solid rgba(206,206,206,.2);
+    background-color: #ffff;   
+}
+.footer_menu_list li h4{
+    color: #080808;
+    font-family: 'Catamaran-Bold';
+}
+.footer_menu_list li a,
+.footer_social_links li a i,
+.footer_social_links li span{
+    color: #929292;
+}
+.footer_social_links li a i:hover{
+    color: #080808;
+}

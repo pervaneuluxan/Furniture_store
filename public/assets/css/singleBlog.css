@@ -1,0 +1,393 @@
+@import url('reset.css');
+@import url('header.css');
+@import url('footer.css');
+@import url('font.css');
+@import url('elements.css');
+
+*{
+    font-family: 'Catamaran-Regular';
+}
+body{
+    min-height: 100vh;
+}
+.header .center,
+.footer .center{
+    width: 1100px;
+}
+.single_post .center,
+.post_author .center,
+.related_posts .center,
+.comments .center,
+.write_comment .center{
+    width: 726px;
+}
+.single_post{
+    padding:110px 0 110px 0;
+}
+.single_post_in{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.post_main_img{
+    width: 726px;
+    height: auto;
+    object-fit: cover;
+}
+
+.single_post_title{
+    width: 100%;
+    margin: 30px 0 5px;
+    font-size: 24px;
+    font-family: 'Catamaran-Bold';
+    text-transform: uppercase;
+    line-height: 48px;
+    letter-spacing: 3.7px;
+    color: #080808; 
+}
+.post_details{
+    width: 100%px;
+}
+.post_date{
+    font-family: 'Catamaran-Bold';
+    letter-spacing: .1em;
+}
+.info_author,
+.post_date,
+.comments_info{
+    padding-right: 15px;
+    margin-right: 3px;
+    font-size: 12px;
+    font-family: 'Catamaran-Bold';
+    color: #929292;
+    
+}
+.info_author span,
+.info_author a{
+    text-transform: uppercase;
+    font-family: 'Catamaran-ExtraBold';
+    letter-spacing: .1em;
+}
+.info_author a{
+    color: #404040!important;
+}
+.comments_info i{
+    font-size: 14px;
+    padding-right: 10px;
+    color: #929292;
+}
+.post_tags li{
+    margin-top: 12px;
+    margin-right: 3px;
+}
+.post_tags li a{
+    font-family: 'Catamaran-ExtraBold';
+    text-transform: uppercase;
+    color: #464646;
+    font-size: 12px;
+    letter-spacing: .1em;
+}
+.post_content{
+    margin: 0 0 10px 0;
+    font-family: 'Catamaran-Light';
+    font-size: 16px;
+    color: #999999;
+}
+.images_top_text{
+    color: #080808;
+    font-size: 30px;
+    line-height: 50px;
+    margin-top: 30px;
+}
+.post_gallery_list{
+    padding-bottom: 38px;
+    padding-top: 38px;
+}
+.post_gallery_list li img{
+    width: 348px;
+    height:221px;
+    object-fit: cover;
+} 
+.images_bottom_text{
+    margin-top: 14px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-family: 'Catamaran-Light';
+    color: #999999;
+    line-height: 30px;
+}
+.blockquote{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 50px 30px 38px;
+    background-color: #fafafa;
+    text-align: center;
+}
+.blockquote blockquote{
+    font-family: 'Catamaran-Bold';
+    font-size: 24px;
+    color: #080808;
+    letter-spacing: 3.2px;
+}
+.tag_list{
+    margin-top: 40px;
+}
+.tag_list li{
+   margin-right: 5px;
+}
+.tag_list li a{
+    text-transform: uppercase;
+    color: #848484;
+    font-size: 9px;
+    font-family: 'Catamaran-Bold';
+    padding: 0 25px;
+    background-color: transparent;
+    border: 1px solid #d3d3d3;
+    height: 29px;
+    line-height: 31px;
+    margin-right: 3px;
+    margin-bottom: 10px;
+}
+.post_author{
+    vertical-align: middle;
+    text-align: center;
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+}
+.post_author_in{
+    padding: 75px 0;
+    min-height: 78px;
+    clear: both;
+}
+.author_content{
+    padding: 0 30px;
+}
+.post_author_in img{
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.author_info_list {
+   margin-left: 30px;
+   margin-top: 30px;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: flex-start;
+}
+.author_info_list li span{
+    color: #080808;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-family: 'Catamaran-Bold';
+}
+.author_info_list li p{
+    text-align: left;
+    margin: 17px 0 14px;
+    color: #999;
+    font-family: 'Catamaran-Light';
+}
+.author_info_list li a{
+    margin-right: 10px;
+}
+.author_info_list li a i{
+    color: #080808;
+    font-size: 14px;
+}
+.related_posts{
+    padding: 46px 0 26px;
+}
+.related_posts_in h4{
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #080808;
+    text-transform: uppercase;
+    font-family: 'Catamaran-ExtraBold';
+}
+.related_posts_list{
+    margin-top: 40px;
+}
+.related_posts_list li{
+    width: calc((100% - 30px)/4);
+    margin-right:10px ;
+}
+.related_posts_list li:nth-child(4n+4){
+    margin-right: 0!important;
+}
+.related_posts_list li a img{
+    width: 166px;
+    height: auto;
+    object-fit: cover;
+}
+.related_posts_list li a{
+    position: relative;
+}
+.related_posts_list li a img + span{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0,.5);
+    transition: all .3s;
+    opacity: 0;
+}
+.related_posts_list li a:hover > span{
+    opacity: 0.6;
+}
+.related_posts_list li .post_date{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.related_posts_list li h4 a{
+    font-size: 16px;
+    font-family: 'Catamaran-ExtraBold';
+    color: #080808;
+}
+.comments{
+    padding-bottom: 60px;
+}
+.comments_in{
+    padding: 41px 0 20px 31px;
+}
+.comments_in h3{
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-family: 'Catamaran-Bold';
+}
+.single_comment{
+   margin-top: 60px;
+   display: flex;
+}
+.single_comment img{
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.single_comment ul{
+    margin-left: 20px;
+}
+.single_comment ul li h4{
+    float: left;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #080808;
+    font-size: 16px;
+    font-family: 'Catamaran-ExtraBold';
+}
+.single_comment li span{
+    color: #cacaca;
+    font-size: 12px;
+    letter-spacing: .1em;
+    padding-left: 9px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: 'Catamaran-Bold';
+}
+.single_comment li p{
+    margin: 7px 0;
+    color: #929292;
+    font-family: 'Catamaran-Light';
+    font-size: 16px;
+}
+.write_comment{
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+}
+.write_comment_in{
+    padding: 87px 0 78px;
+}
+.write_comment_in h3{
+    margin: 0 0 32px;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 2px;
+    color: #080808;
+    font-family: 'Catamaran-Bold';
+}
+.comment_form_list li{
+    width: 78%;
+}
+.comment_input{
+    width: 100%;
+    margin: 2px 0 15px;
+    padding: 20px 18px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight:300;
+    color: #929292;
+    background-color: transparent;
+    border: 1px solid #d3d3d3;
+    border-radius: 0;
+    outline: 0;
+}
+.textarea{
+    width: 100%;
+    margin: 2px 0 15px;
+    padding: 20px 18px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: inherit;
+    color: #929292;
+    background-color: transparent;
+    border: 1px solid #d3d3d3;
+    border-radius: 0;
+    outline: 0;
+}
+.comment_input:focus,
+.textarea:focus{
+    background-color: whitesmoke;
+}
+.input_check{
+    margin:10px 0;
+}
+.input_check + label{
+    font-family: 'Catamaran-Light';
+    font-size: 16px;
+    color: #929292;
+}
+.form_submit{
+    padding: 13px 46px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #fff;
+    background-color: #080808;
+    line-height: 30px;
+    letter-spacing: .15em;
+    border: 2px solid transparent;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -moz-transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.form_submit:hover{
+    background-color: #252525;
+}
+/* Footer */
+.footer{
+    border-top: 1px solid rgba(206,206,206,.2);
+    background-color: #ffff;   
+}
+.footer_menu_list li h4{
+    color: #080808;
+    font-family: 'Catamaran-Bold';
+}
+.footer_menu_list li a,
+.footer_social_links li a i,
+.footer_social_links li span{
+    color: #929292;
+}
+.footer_social_links li a i:hover{
+    color: #080808;
+}

@@ -1,0 +1,123 @@
+@import url('reset.css');
+@import url('header.css');
+@import url('footer.css');
+@import url('font.css');
+@import url('elements.css');
+
+*::selection{
+   color: white;
+   background-color: #080808;
+}
+body{
+    font-family: 'Catamaran', sans-serif;
+}
+.center{
+    width: 1100px;
+}
+.parallax{
+    height: 325px;
+    background-image: url('images/cart_parallax_bcg.jpg');
+    background-position:unset;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.parallax h1{
+    color: white;
+    font-size: 55px;
+    text-transform: uppercase;
+    font-family: 'Catamaran-Medium';
+    letter-spacing: 2px;
+}
+.wishlist{
+    margin-top: 50px;
+    margin-bottom: 100px;
+    background-color: white;
+}
+.empty_wishlist{
+    padding: 15px 30px;
+    margin: 50px 0 30px;
+    line-height: 48px;
+    list-style: none;
+    background-color: transparent;
+    border-bottom: 1px solid #e1e1e1;
+    font-family: 'Catamaran-Light';
+    font-size: 16px;
+    color: #929292;
+    text-align: center;
+}
+.whishlist_table tr{
+    border-bottom: 1px solid #e1e1e1;
+    height: 141px;
+}
+.whishlist_item td {
+    padding: 22px 0;
+    vertical-align: middle;
+    text-align: center;
+}
+.whishlist_item .product_remove{
+    padding: 16px 0;
+}
+.whishlist_item .product_remove button{
+    background-color: transparent;
+    width: 23.75px;
+    height: 30px;
+    border: none;
+    outline: none;
+    color: #929292;
+    font-size: 25px;
+}
+.whishlist_item .product_img{
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 92px
+}
+.whishlist_item .product_img a img{
+    width: 80px;
+    height: 97px;
+}
+.whishlist_item .product_name{
+    width: 451px;
+    text-align: left;
+    padding-left: 20px;
+}
+.whishlist_item .product_name a{
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #080808;
+    font-family: 'Catamaran-Bold';
+}
+.whishlist_item .product_price .new_price,
+.whishlist_item .product_price .old_price del{
+    font-size: 16px;
+    font-family: 'Montserrat-Regular';
+    color: #929292;
+    width: 126px;
+}
+.whishlist_item .product_stock_status{
+    width: 129.250px;
+    color: #929292;
+    font-family: 'Catamaran-Light';
+}
+.whishlist_item .product_add_to_cart{
+    width: 240.797px;
+}
+.whishlist_item .product_add_to_cart button{
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family:'Catamaran-ExtraBold';
+    color: #080808;
+    cursor: pointer;
+    line-height: 50px;
+    height: 50px;
+    border: none;
+    outline: none;
+}

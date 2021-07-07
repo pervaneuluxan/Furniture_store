@@ -1,0 +1,174 @@
+@font-face {
+    font-family: 'Catamaran-Bold';
+    src: url('fonts/Catamaran-Bold.eot');
+    src: url('fonts/Catamaran-Bold.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Catamaran-Bold.woff2') format('woff2'),
+        url('fonts/Catamaran-Bold.woff') format('woff'),
+        url('fonts/Catamaran-Bold.ttf') format('truetype'),
+        url('fonts/Catamaran-Bold.svg#fonts/Catamaran-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Catamaran-ExtraLight';
+    src: url('fonts/Catamaran-ExtraLight.eot');
+    src: url('fonts/Catamaran-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Catamaran-ExtraLight.woff2') format('woff2'),
+        url('fonts/Catamaran-ExtraLight.woff') format('woff'),
+        url('fonts/Catamaran-ExtraLight.ttf') format('truetype'),
+        url('fonts/Catamaran-ExtraLight.svg#fonts/Catamaran-ExtraLight') format('svg');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Catamaran-Black';
+    src: url('fonts/Catamaran-Black.eot');
+    src: url('fonts/Catamaran-Black.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Catamaran-Black.woff2') format('woff2'),
+        url('fonts/Catamaran-Black.woff') format('woff'),
+        url('fonts/Catamaran-Black.ttf') format('truetype'),
+        url('fonts/Catamaran-Black.svg#fonts/Catamaran-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Catamaran-SemiBold';
+    src: url('fonts/Catamaran-SemiBold.eot');
+    src: url('fonts/Catamaran-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Catamaran-SemiBold.woff2') format('woff2'),
+        url('fonts/Catamaran-SemiBold.woff') format('woff'),
+        url('fonts/Catamaran-SemiBold.ttf') format('truetype'),
+        url('fonts/Catamaran-SemiBold.svg#fonts/Catamaran-SemiBold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Catamaran-Light';
+    src: url('fonts/Catamaran-Light.eot');
+    src: url('fonts/Catamaran-Light.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Catamaran-Light.woff2') format('woff2'),
+        url('fonts/Catamaran-Light.woff') format('woff'),
+        url('fonts/Catamaran-Light.ttf') format('truetype'),
+        url('fonts/Catamaran-Light.svg#fonts/Catamaran-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Catamaran-Thin';
+    src: url('fonts/Catamaran-Thin.eot');
+    src: url('fonts/Catamaran-Thin.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Catamaran-Thin.woff2') format('woff2'),
+        url('fonts/Catamaran-Thin.woff') format('woff'),
+        url('fonts/Catamaran-Thin.ttf') format('truetype'),
+        url('fonts/Catamaran-Thin.svg#fonts/Catamaran-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Catamaran-Medium';
+    src: url('fonts/Catamaran-Medium.eot');
+    src: url('fonts/Catamaran-Medium.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Catamaran-Medium.woff2') format('woff2'),
+        url('fonts/Catamaran-Medium.woff') format('woff'),
+        url('fonts/Catamaran-Medium.ttf') format('truetype'),
+        url('fonts/Catamaran-Medium.svg#fonts/Catamaran-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Catamaran-Regular';
+    src: url('fonts/Catamaran-Regular.eot');
+    src: url('fonts/Catamaran-Regular.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Catamaran-Regular.woff2') format('woff2'),
+        url('fonts/Catamaran-Regular.woff') format('woff'),
+        url('fonts/Catamaran-Regular.ttf') format('truetype'),
+        url('fonts/Catamaran-Regular.svg#fonts/Catamaran-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Catamaran-ExtraBold';
+    src: url('fonts/Catamaran-ExtraBold.eot');
+    src: url('fonts/Catamaran-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Catamaran-ExtraBold.woff2') format('woff2'),
+        url('fonts/Catamaran-ExtraBold.woff') format('woff'),
+        url('fonts/Catamaran-ExtraBold.ttf') format('truetype'),
+        url('fonts/Catamaran-ExtraBold.svg#fonts/Catamaran-ExtraBold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Montserrat-Regular';
+    src: url('fonts/Montserrat-Regular.eot');
+    src: url('fonts/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Montserrat-Regular.woff2') format('woff2'),
+        url('fonts/Montserrat-Regular.woff') format('woff'),
+        url('fonts/Montserrat-Regular.ttf') format('truetype'),
+        url('fonts/Montserrat-Regular.svg#Montserrat-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Montserrat-Light';
+    src: url('fonts/Montserrat-Light.eot');
+    src: url('fonts/Montserrat-Light.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Montserrat-Light.woff2') format('woff2'),
+        url('fonts/Montserrat-Light.woff') format('woff'),
+        url('fonts/Montserrat-Light.ttf') format('truetype'),
+        url('fonts/Montserrat-Light.svg#Montserrat-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat-SemiBold';
+    src: url('fonts/Montserrat-SemiBold.eot');
+    src: url('fonts/Montserrat-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Montserrat-SemiBold.woff2') format('woff2'),
+        url('fonts/Montserrat-SemiBold.woff') format('woff'),
+        url('fonts/Montserrat-SemiBold.ttf') format('truetype'),
+        url('fonts/Montserrat-SemiBold.svg#Montserrat-SemiBold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url('fonts/Montserrat-Bold.eot');
+    src: url('fonts/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
+        url('fonts/Montserrat-Bold.woff2') format('woff2'),
+        url('fonts/Montserrat-Bold.woff') format('woff'),
+        url('fonts/Montserrat-Bold.ttf') format('truetype'),
+        url('fonts/Montserrat-Bold.svg#Montserrat-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+
+
+

@@ -1,0 +1,267 @@
+@import url('reset.css');
+@import url('header.css');
+@import url('footer.css');
+@import url('font.css');
+@import url('elements.css');
+
+
+
+*{
+    font-family: 'Catamaran-Light';
+}
+html,
+body{
+    min-height: 100vh;
+}
+.center{
+    width: 1100px;
+}
+.parallax{
+    min-height: 335px;
+    background: url('images/about_bcg.jpg');
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+}
+.parallax h1{
+    color: #fff;
+    font-size: 50px;
+    text-transform: uppercase;
+    font-family:'Catamaran-Semibold';
+    letter-spacing: 3.7px;  
+}
+.dispatch{
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+.dispatch_in_left{
+    width: 50%;
+}
+.dispatch_in_left img{
+    width: 520px;
+    object-fit: cover;
+}
+.dispatch_in_right{
+    width: 50%;
+}
+.tabs{
+    padding: 0 0 30px 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.tabs input[type="radio"]{
+    display: none!important;
+}
+.tab_lable{
+    padding: 6px 40px;
+    font-size: 12px;
+    line-height: 47px;
+    font-family:'Catamaran-Black' ;
+    letter-spacing: .1em;
+    color: #080808;
+    background-color: #fff;
+    border: 1px solid #e8e8e8;
+    text-transform: uppercase;
+    text-align: center;
+    transition: color .2s ease-out,background-color .2s ease-out,border-color .2s ease-out;
+    order: 0;   
+}
+.tabs input[type="radio"]:checked + .tab_lable{
+    background-color: #080808;
+    border-color: #080808;
+    color: #fff;
+}
+.tab_lable:hover{
+    background-color: #080808;
+    border-color: #080808;
+    color: #fff;
+}
+.tab_lable:not(.last_tab_lable){
+    margin-right: 15px;
+}
+.tabs .tab{
+    width: 100%;
+    order: 1;
+    display: none;
+    transition: all .3s ease-in;
+}
+.tabs input[type="radio"]:checked + .tab_lable + .tab{
+    display: flex;
+}
+.tabs p{
+    width: 100%;
+    margin-top: 20px;
+    font-family: 'Catamaran-ExtraLight';
+    font-size: 16px;
+    color: #929292;
+    line-height: 25px;
+}
+.tabs span{
+    order: 2;
+    margin-top: 30px;
+}
+.tabs span a{
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #929292;
+    line-height: 30px;
+    letter-spacing: .15em;
+    font-weight: 700;
+    transition: all .5s;
+}
+.tabs span .lnr-arrow-right{
+    font-weight: 100;
+    margin-left: 5px;
+}
+.tabs span a:hover{
+    color: #080808;
+    margin-right: 5px;
+}
+.testimonials_section{
+    background-color: rgb(243, 243, 243);
+    padding-top: 83px;
+    padding-bottom: 84px;
+    height: 550px;
+}
+.testimonials_section_in h3{
+    font-size: 24px;
+    font-weight: 700;
+    color: #080808;
+    line-height: 36px;
+    letter-spacing: 2px;
+    margin: 20px 0;
+}
+
+.testimonials_section_in .slider .item p{
+    color: #929292;
+    margin-top: 30px;
+    line-height: 30px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 300;
+    text-align: center;
+}
+.testimonials_section_in .slider .item img{    
+    width: 50px;
+    height: 50px;
+    margin: 20px 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+.testimonials_section_in .slider .item h5{
+    letter-spacing: 2px;
+    font-size: 14px;
+    color: #080808;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+}
+.testimonials_section_in .slider .item h6{
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: #080808;
+    text-align: center;
+}
+.slick_prev{
+    position: absolute;
+    top: 30%;
+    left: 0;
+    opacity: 0;
+}
+.slick_next{
+    position: absolute;
+    top: 30%;
+    right: 0;
+    opacity: 0;
+    transition: all .5s;
+}
+.slider .lnr-arrow-left,.slider .lnr-arrow-right{
+    font-size: 30px;
+    color: #929292;
+}
+.slider:hover .slick_prev{
+    opacity: 1;
+}
+.slider:hover .slick_next{
+    opacity: 1;
+}
+.our_team{
+    padding-top: 90px;
+    padding-bottom: 20px;
+}
+.our_team_in h2{
+    margin: 35px 0 55px 0;
+    text-align: center;
+    font-size: 45px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+.team_list li{
+    width: calc(100% /3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px 0 15px;
+    margin-bottom: 63px;
+}
+.team_list li:nth-child(3n+3){
+    padding-right: 0!important;
+}
+.team_list li:nth-child(1),
+.team_list li:nth-child(4){
+    padding-left: 0!important;
+}
+
+.team_list li a img{
+   width: 159px;
+   height: 159px;
+   border-radius: 50%;
+   margin-bottom: 25px;  
+   object-fit: cover;
+   -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.team_list li a img:hover{
+    filter: opacity(70%);
+}
+.team_list h4 a{
+    color: #080808;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family:'Catamaran-ExtraBold';
+    letter-spacing: 1px;
+}
+.team_list h6{
+    letter-spacing: .1em;
+    color: #929292;
+    font-size: 12px;
+    line-height: 18px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+.team_list p{
+    width: 346px;
+    font-family: 'Catamaran-ExtraLight';
+    font-size: 16px;
+    color: #929292;
+    margin:10px 0;
+    text-align: center;
+}
+.social_links{
+    margin-top: 20px;
+    width: 346px;
+    display: flex;
+    justify-content: center;
+}
+.social_links li{
+    padding-right:5px;
+    margin-bottom: 0!important;
+    width: 50px!important;
+}
+.social_links li a{
+    color: #080808;
+    font-size: 14px;
+}

@@ -1,0 +1,93 @@
+@import url('reset.css');
+@import url('header.css');
+@import url('footer.css');
+@import url('font.css');
+@import url('elements.css');
+
+*{
+    font-family: 'Catamaran-Light';
+}
+body{
+    min-height: 100vh;
+}
+
+.center{
+    width: 1100px;
+}
+.gallery_title_in h2{
+    font-size: 30px;
+    font-family: 'Catamaran-Bold';
+    line-height: 48px;
+    letter-spacing: 3.7px;
+    margin: 40px 0  10px 0;
+    color: #080808;
+    text-transform: uppercase;
+}
+.gallery_title_in p{
+    font-size: 20px;
+    font-family: 'Catamaran-Light';
+    display: block;
+    margin: 14px 0 0;
+    color: #929292;
+    text-transform: none;
+    line-height: 30px;
+    letter-spacing: 0;
+    width: 730px;
+    text-align: center;
+}
+.gallery{
+    padding-top: 100px;
+    padding-bottom: 88px;
+}
+.gallery_list{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 20px;
+
+}
+.gallery_list li{
+    display: block;
+    overflow: hidden;
+}
+.gallery_list li:nth-child(7){
+    grid-column: span 2;
+    grid-row: span 2;
+}
+.gallery_list li:nth-child(11){
+    grid-column: span 2;
+    grid-row: span 2;
+}
+.gallery_list li:nth-child(15){
+    grid-column: span 2;
+    grid-row: span 2;
+}
+.gallery_list li:nth-child(19){
+    grid-column: span 2;
+    grid-row: span 2;
+}
+.gallery_list li img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all .3s ease;
+}
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:pink;
+    transition: all .3s ease;
+    /* opacity: 0; */
+}
+.gallery_list li:hover .overlay{
+    opacity: 1;
+}
+ 
+.gallery_list li:hover img{
+    transform: scale(1.05);
+}
