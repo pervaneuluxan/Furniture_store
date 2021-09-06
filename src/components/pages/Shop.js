@@ -6,7 +6,7 @@ import ProductItemBox from '../template/ProductItemBox';
 
 export default function Shop(props){
     const [posts, setPosts] = useState([]);
-    const [perPage, setPerPage] = useState(4)
+    const [perPage, setPerPage] = useState(8)
     const [paginationCount, setPaginationCount] = useState([]);
     const [categories, setCategories] = useState([]);
     

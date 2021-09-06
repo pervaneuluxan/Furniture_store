@@ -5,10 +5,7 @@ import { getPostsByType,sendFormData,getPostById } from '../../utils/Models';
 
 export default function Contact(){
     const [posts, setPosts] = useState([]);
-    const [fullName, setFullName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [message, setMessage] = useState('');
+    const [person, setPerson] = useState({fullName:'',email:'',phone:'',message:''})
     const [showError, setShowError] = useState(false)
     const [pageData, setPageData] = useState([])
     const [mapData, setMapData] = useState({})
@@ -53,21 +50,18 @@ export default function Contact(){
     const sendMessage=(e)=>{
         e.preventDefault(); 
         
-        if(fullName && email && phone && message){
+        if(person.fullName && person.email && person.phone && person.message){
             setShowError(false)
             sendFormData(
                 {
                   contact_form:true,
-                  title:fullName,
-                  'meta[1]':email,
-                  'meta[2]':phone,
-                  content:message
+                  title:person.fullName,
+                  'meta[1]':person.email,
+                  'meta[2]':person.phone,
+                  content:person.message
                 }
             ).then((res)=>{
-              setFullName('');
-              setEmail('');
-              setPhone('');
-              setMessage('')
+             setPerson({fullName:'',email:'',phone:'',message:''})
               alert('Mesajınız göndərildi')
 
               document.getElementById('contact_form').reset();
@@ -79,11 +73,13 @@ export default function Contact(){
             setShowError(true)
         }
     }
-    const setState=(function_name, e)=>{
+   const handleChange=(e)=>{
+       const value=e.target.value;
+       const name=e.target.name;
 
-      function_name(e.target.value)
+       setPerson({...person,[name]:value})
 
-    }
+   }
     
     return(
         
@@ -150,28 +146,28 @@ export default function Contact(){
                         <form onSubmit={sendMessage.bind(this)} id="contact_form">
                             <ul className="contact_form_list full_width flex direction_column">
                                 <li>
-                                    <input type="text" id="full_name" placeholder="Full Name" className="contact_input" defaultValue={fullName} onKeyUp={setState.bind(this,setFullName)} />
+                                    <input type="text" name="fullName" id="full_name" placeholder="Full Name" className="contact_input" defaultValue={person.fullName} onKeyUp={handleChange} />
                                     {
-                                        (showError && !fullName) && <span>* This field must be filled</span>
+                                        (showError && !person.fullName) && <span>* This field must be filled</span>
                                     }
 
                                 </li>
                                 <li>
-                                    <input type="email" id="email" placeholder="Email address" className="contact_input" defaultValue={email} onKeyUp={setState.bind(this,setEmail)} />
+                                    <input type="email"  name="email" id="email" placeholder="Email address" className="contact_input" defaultValue={person.email} onKeyUp={handleChange} />
                                     {
-                                        (showError && !fullName) && <span>* This field must be filled</span>
+                                        (showError && !person.fullName) && <span>* This field must be filled</span>
                                     }
                                 </li>
                                 <li>
 
-                                    <input type="text" id="website" placeholder="Phone number" className="contact_input" defaultValue={phone} onKeyUp={setState.bind(this,setPhone)} />
+                                    <input type="text" name="phone" id="website" placeholder="Phone number" className="contact_input" defaultValue={person.phone} onKeyUp={handleChange} />
                                 
                                 </li>
                                 <li>
                                     <textarea id="message" rows="10" cols="40"
-                                        className="textarea" onKeyUp={setState.bind(this,setMessage)} defaultValue={message} placeholder="Write a message"></textarea>
+                                        className="textarea" name="message" onKeyUp={handleChange} defaultValue={person.message} placeholder="Write a message"></textarea>
                                    {
-                                        (showError && !fullName) && <span>* This field must be filled</span>
+                                        (showError && !person.fullName) && <span>* This field must be filled</span>
                                     }
                                 </li>
                                 <li>

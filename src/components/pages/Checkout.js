@@ -4,14 +4,10 @@ import PageTop1 from '../template/PageTop1';
 import { sendFormData,getBasket } from '../../utils/Models';
 
 export default function Checkout(){
-
-    const [first_name, setFirst_name] = useState('');
-    const [last_name, setLast_name] = useState('');
-    const [company, setCompany] = useState('')
-    const [country, setCountry] = useState('')
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [postCode, setPostCode] = useState('')
+    const [personInfo, setPersonInfo] = useState({
+        firstName:'',lastName:'',company:'',country:'',
+        email:'',phone:'',postCode:''
+    })
     const [showError, setShowError] = useState(false); 
 
     const [products, setProducts] = useState([]);
@@ -83,27 +79,24 @@ export default function Checkout(){
       const sendProductDetails=(e)=>{
         // e.preventDefault(); 
         
-        if(first_name &&last_name && email && phone && country && company && postCode){
+        if(personInfo.firstName &&personInfo.lastName 
+            && personInfo.email && personInfo.phone && 
+            personInfo.country && personInfo.company && personInfo.postCode){
             setShowError(false)
             sendFormData(
                 {
                   order_product:true,
-                  title:first_name+" "+last_name,
-                  'meta[1]':email,
-                  'meta[2]':phone,
-                  'meta[3]':country,
-                  'meta[4]':company,
-                  'meta[5]':postCode
+                  title:personInfo.firstName +" "+personInfo.lastName,
+                  'meta[1]':personInfo.email,
+                  'meta[2]':personInfo.phone,
+                  'meta[3]':personInfo.country,
+                  'meta[4]':personInfo.company,
+                  'meta[5]':personInfo.postCode
         
                 }
             ).then((res)=>{
-              setFirst_name('');
-              setLast_name('');
-              setEmail('');
-              setPhone('');
-              setCompany('');
-              setCountry('');
-              setPostCode('');
+              setPersonInfo({  firstName:'',lastName:'',company:'',country:'',
+        email:'',phone:'',postCode:''})
               alert('Mesajınız göndərildi')
 
               document.getElementById('order_form').reset();
@@ -120,11 +113,12 @@ export default function Checkout(){
       
     }
 
-    const setState=(state_name, e)=>{
+   const handleChange=(e)=>{
+       const name=e.target.name;
+       const value=e.target.value;
 
-      state_name(e.target.value)
-
-    }
+       setPersonInfo({...personInfo,[name]:value})
+   }
     
     return(
         
@@ -190,20 +184,20 @@ export default function Checkout(){
                                 <li class="flex full_width">
                                     <p>
                                         <label for="first_name">First name..*</label>
-                                        <input type="text" id="first_name" name="first_name" class="input_text1" defaultValue={first_name} onKeyUp={setState.bind(this,setFirst_name)} />
+                                        <input type="text" id="first_name" name="firstName" class="input_text1" defaultValue={personInfo.firstName} onKeyUp={handleChange} />
                                     </p>
                                     <p class="second_p">
                                         <label for="last_name">Last name..*</label>
-                                        <input type="text" id="last_name" name="last_name" class="input_text1" defaultValue={last_name} onKeyUp={setState.bind(this,setLast_name)} />
+                                        <input type="text" id="last_name" name="lastName" class="input_text1" defaultValue={personInfo.lastName} onKeyUp={handleChange} />
                                     </p>
                                 </li>
                                 <li>
                                     <label for="company_name">Company name (optional)</label>
-                                    <input type="text" id="company_name" name="company_name" class="input_text" defaultValue={company} onKeyUp={setState.bind(this, setCompany)} />    
+                                    <input type="text" id="company_name" name="company" class="input_text" defaultValue={personInfo.company} onKeyUp={handleChange} />    
                                 </li>
                                 <li>
                                         <label for="last_name">Country..*</label>
-                                        <select class="input_text" onChange={setState.bind(this,setCountry)}>
+                                        <select class="input_text" onChange={handleChange}>
                                             <option value="az">Azerbaijan</option>
                                             <option value="en">England</option>
                                             <option value="ru">Russia</option>
@@ -226,15 +220,15 @@ export default function Checkout(){
                                 </li>  
                                 <li>
                                     <label for="postcode">Postcode / ZIP..*</label>
-                                    <input type="text" id="postcode" name="postcode" class="input_text" defaultValue={postCode}  onKeyUp={setState.bind(this, setPostCode)}/>
+                                    <input type="text" id="postcode" name="postcode" class="input_text" defaultValue={personInfo.postCode}  onKeyUp={handleChange}/>
                                 </li>  
                                 <li>
                                     <label for="phone">Phone ..*</label>
-                                    <input type="text" id="phone" name="phone" class="input_text" defaultValue={phone}  onKeyUp={setState.bind(this, setPhone)}/>
+                                    <input type="text" id="phone" name="phone" class="input_text" defaultValue={personInfo.phone}  onKeyUp={handleChange}/>
                                 </li>  
                                 <li>
                                     <label for="email">Email address ..*</label>
-                                    <input type="text" id="email" name="email" class="input_text" defaultValue={email} onKeyUp={setState.bind(this, setEmail)}/>
+                                    <input type="text" id="email" name="email" class="input_text" defaultValue={personInfo.email} onKeyUp={handleChange}/>
                                 </li>
                                 <li>
                                     <input type="checkbox" id="account_create_input" class="checkbox" />
