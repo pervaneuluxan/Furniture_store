@@ -1,13 +1,13 @@
 import React,{useState, useEffect, useContext } from 'react';
 import { AppendStyle } from '../../utils/Append';
 import PageTop1 from '../template/PageTop1';
-import { getBasket,addBasket } from '../../utils/Models';
-import { TranslateList } from '../../App';
+import { getBasket} from '../../utils/Models';
+import { useGlobalContext } from '../../utils/CartContext';
 
 
 export default function Whislist(){
 
-    const tr_list=useContext(TranslateList);
+    const {translate,addBasket}=useGlobalContext();
     
     const [products, setProducts] = useState([])
     const [updateWishlist, setUpdateWishlist] = useState(false);
@@ -120,7 +120,7 @@ export default function Whislist(){
                                         <td className="product_stock_status">{
                                         (item.stock > 3) ?<span>In stock</span>:<span>Sold out</span>
                                         }</td>
-                                        <td className="product_add_to_cart"><button type="button" onClick={addBasket.bind(this ,item.id,1)}>{tr_list.add_to_cart}</button></td>
+                                        <td className="product_add_to_cart"><button type="button" onClick={addBasket.bind(this,item.id,1)}>{translate.add_to_cart}</button></td>
                                     </tr>
                                 )
                             })

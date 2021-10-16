@@ -8,9 +8,6 @@ export default function Partners(){
     getPostsByType(17).then((res)=> {
   
          const res_data=res.data
-
-         console.log(res_data)
- 
          const posts=[];
        
          for(let index in res_data.data){

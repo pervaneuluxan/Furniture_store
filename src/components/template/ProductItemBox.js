@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom";
-import { addBasket,addWishlist } from "../../utils/Models";
+import { useGlobalContext } from "../../utils/CartContext";
 export default (props)=>{
+
+    const {addBasket,addWishlist}=useGlobalContext();
     
     const {item}=props;
     return(
-        <li>
+        <>
         <div className="image full_width">
             <NavLink to={"/shop_item/"+item.link}><img src={item.featured} alt="" /></NavLink>
             <div className="overlay">
@@ -33,7 +35,7 @@ export default (props)=>{
         </div>
         <span className="add_to_cart" onClick={addBasket.bind(this,item.id ,1)}>Add to Cart</span>
         
-     </li>
+     </>
 
     )
 }

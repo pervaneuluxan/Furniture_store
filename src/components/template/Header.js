@@ -1,24 +1,22 @@
 import { useState, useEffect, useRef } from 'react';
 import { getBasket, getMenusByType } from '../../utils/Models';
+import { useGlobalContext } from '../../utils/CartContext';
 import {NavLink} from 'react-router-dom';
 
 export default function Header() {
+    const {cart,total,removeItem}=useGlobalContext();
+
     const [menus, setMenus] = useState([]);
     const [wishListTotal, setWishListTotal] = useState(0)
-    const [products, setProducts] = useState([])
-    const [total, setTotal] = useState(0)
-    const [updateBasket, setUpdateBasket] = useState(false)
     const lang_menu = useRef();
-
- 
-   
+  
     const l_storage = window.localStorage,
         check_lang = l_storage.getItem('default_lang');
 
     const wishlist_key = 'wishlist',
-        basket_key = "basket",
-        checkWishlist = l_storage.getItem('wishlist'),
-        checkBasket = l_storage.getItem('basket')
+       
+        checkWishlist = l_storage.getItem('wishlist');
+       
     
     useEffect(() => {
 
@@ -68,79 +66,11 @@ export default function Header() {
                 })
             }
         }
-        if (checkBasket) {
-            const cart_data = JSON.parse(checkBasket);
-            const ids = Object.keys(cart_data).join(',');
-
-            if (ids.length > 0) {
-                getBasket(ids).then((res) => {
-
-                    let res_data = res.data;
-
-                    const products = [];
-                    for (let index in res_data.data) {
-                        let row = res_data.data[index];
-
-                        let discount = row.metas.discount,
-                            price = row.metas.price,
-                            discount_start_date = new Date(row.metas.discount_start_date),
-                            discount_end_date = new Date(row.metas.discount_end_date),
-                            now_date = new Date(),
-                            calc_discount = (price * (100 - discount)) / 100;
-
-
-                        let has_discount = (discount_start_date <= now_date && discount_end_date >= now_date) ? true : false;
-
-                        let qty = cart_data[row.id];
-
-
-                        let sum = (has_discount) ? qty * calc_discount : qty * price;
-
-                        setTotal(prevState => prevState + sum);
-
-                        products.push({
-                            id: row.id,
-                            title: row.title,
-                            featured: row.featured,
-                            excerpt: row.excerpt,
-                            metas: row.metas,
-                            link: row.slug,
-                            date: row.date,
-                            has_discount: has_discount,
-                            price: price,
-                            discount_price: calc_discount,
-                            qty: qty,
-                            sum: sum,
-                            stock: row.metas.stock
-                        })
-
-                    }
-                    setProducts(products);
-                })
-            } else {
-                setProducts([]);
-            }
-        }
        
 
-    }, [])
+    }, [cart])
 
-    const removeItem=(product_id, e)=>{
-        if(window.confirm("Are you sure delete this?")){
-            console.log(e, e.target.value)
-
-            const old_data=JSON.parse(l_storage.getItem(basket_key));
-               
-               
-            delete old_data[product_id];
-    
-            l_storage.setItem(basket_key,JSON.stringify(old_data));
-             
-            setTotal(0);
-            setUpdateBasket(Math.random());
-        }
-        window.location.href=window.location.href;
-    }
+  
     return (
 
         <header className="header full_width flex align_center">
@@ -172,9 +102,9 @@ export default function Header() {
                                 <NavLink to="/cart" activeClassName="active_link">Cart<span>(${total})</span></NavLink>
                                 <ul className="cart_dropdown flex align_center direction_column">
                                     {
-                                        (products.length > 0) ? <>
+                                        (cart.length > 0) ? <>
                                             {
-                                                products.map((item, key) => {
+                                                cart.map((item, key) => {
                                                     return (
                                                         <li key={key}>
                                                             <NavLink to={"/shop_item/"+item.link}><img src={item.featured} className="product_img" /></NavLink>

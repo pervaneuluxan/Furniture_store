@@ -39,7 +39,7 @@ export default function Slider(){
         <>
          <section className="slider full_width">
             <div className="center full_height">
-                <div className="slider_in  full_width full_height single-item">
+                <div className="slider_in  full_width full_height fade">
 
                    {
                        posts.map((item,key)=>{

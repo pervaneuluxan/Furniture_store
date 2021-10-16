@@ -16,13 +16,16 @@ export default function Shop(props){
     const current_page=(!isNaN(get_page)&& get_page > 0) ? get_page:1;
     const prev_page=current_page-1;
     const next_page=current_page+1;
-    
-      useEffect(()=>{
-          AppendStyle('shop')
-          getPostsByType(10,perPage,current_page).then((res)=> {
-  
+
+    useEffect(()=>{
+        
+        AppendStyle('shop')
+        getPostsByType(10,perPage,current_page).then((res)=> {
+            
             const res_data=res.data
+            console.log(res_data);
             const posts=[];
+            
     
          
             const pagination_count=Math.ceil(res_data.total / perPage);
@@ -44,7 +47,6 @@ export default function Shop(props){
                 now_date=new Date(),
                 calc_discount=(price * (100 - discount)) / 100;
               
-                console.log(calc_discount);
               let has_discount=(discount_start_date <= now_date && discount_end_date >= now_date) ? true:false;
               
               posts.push({
@@ -57,7 +59,8 @@ export default function Shop(props){
                     date:row.date,
                     has_discount:has_discount,
                     price:price,
-                    discount_price:calc_discount
+                    discount_price:calc_discount,
+                    categories:row.categories
                 })
                
             }
@@ -67,11 +70,12 @@ export default function Shop(props){
         })
         getCategories(10).then((res)=>{
           let data=res.data;
-          setCategories(data)
+          console.log(data);
+          setCategories(data);      
       })
-  
+   
+    },[])
 
-      },[])
   
     return(
         
@@ -84,8 +88,9 @@ export default function Shop(props){
                     <ul className="categories_list full_height flex justify_center align_center">
                       {
                           categories.map((item,key)=>{
+                              const {title,slug}=item;
                               return(
-                                <li><a href={"/category/"+item.slug}>{item.title}</a></li>
+                                <li key={key}><button type="button">{title}</button></li>
                               )
                             
                           })
@@ -143,7 +148,8 @@ export default function Shop(props){
                         {
                            posts && posts.map((item,key)=>{
                                 return(
-                                   <ProductItemBox item={item}/>
+                                    <li> <ProductItemBox key={key} item={item}/></li>
+                                  
                                 )
                             }) 
                         }

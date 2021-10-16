@@ -1,5 +1,5 @@
 import React,{useState, useEffect } from 'react';
-import { TranslateList } from '../../App';
+import { useGlobalContext } from '../../utils/CartContext';
 import { AppendScript, AppendStyle } from '../../utils/Append';
 import { getPostsByType,sendFormData,getPostById } from '../../utils/Models';
 
@@ -10,7 +10,7 @@ export default function Contact(){
     const [pageData, setPageData] = useState([])
     const [mapData, setMapData] = useState({})
 
-    const tr_list=React.useContext(TranslateList);
+    const {translate}=useGlobalContext();
   
 
       useEffect(()=>{

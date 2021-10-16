@@ -45,7 +45,7 @@ body{
     width: 50%;
 }
 .tabs{
-    padding: 0 0 30px 30px;
+    padding: 0 0 20px 20px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -66,7 +66,7 @@ body{
     transition: color .2s ease-out,background-color .2s ease-out,border-color .2s ease-out;
     order: 0;   
 }
-.tabs input[type="radio"]:checked + .tab_lable{
+.active_lable{
     background-color: #080808;
     border-color: #080808;
     color: #fff;
@@ -82,11 +82,7 @@ body{
 .tabs .tab{
     width: 100%;
     order: 1;
-    display: none;
     transition: all .3s ease-in;
-}
-.tabs input[type="radio"]:checked + .tab_lable + .tab{
-    display: flex;
 }
 .tabs p{
     width: 100%;
@@ -98,7 +94,7 @@ body{
 }
 .tabs span{
     order: 2;
-    margin-top: 30px;
+    margin-left: 25px;
 }
 .tabs span a{
     text-transform: uppercase;

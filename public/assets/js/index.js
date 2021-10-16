@@ -1,19 +1,11 @@
-
-    $('.single-item').slick({
-        loop:true,
-        focusOnSelect: true,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        slidesToScroll: 1,
-        draggable: true,
-        arrows: false,
-        dots: false,
-        fade: true,
-        speed: 3000,
-        infinite: true,
-        cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
-        touchThreshold: 100
-      });
+$('.fade').slick({
+  dots: false,
+  infinite: true,
+  speed: 500,
+  fade: true,
+  cssEase: 'linear'
+});
+	
 
     $(".owl-carousel").owlCarousel({
         loop: true,

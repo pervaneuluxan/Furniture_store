@@ -139,7 +139,7 @@ export const addBasket=(product_id,count)=>{
         ))
 
     }
-    window.location.href=window.location.href;
+    // window.location.href=window.location.href;
    
   
    

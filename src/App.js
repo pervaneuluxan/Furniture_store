@@ -1,7 +1,6 @@
-import React,{useState,useEffect} from "react";
+import React from "react";
 import {Route, BrowserRouter,Switch} from 'react-router-dom';
-
-import { getBasket, getTranslate } from "./utils/Models";
+import { AppProvider } from "./utils/CartContext";
 
 //general component
 import Header from "./components/template/Header";
@@ -29,27 +28,16 @@ import SingleProduct from "./components/posts/SingleProduct";
 
 
 
-export const TranslateList=React.createContext();
-export const BasketList=React.createContext();
+
 
 
 export default function App(){
-  const [translate, setTranslate] = useState({});
-
-  const [basket, setBasket] = useState([])
-  
-  useEffect(() => {
-
-    getTranslate().then((res)=>{
-       setTranslate(res.data);
-  })
-  
  
-  }, [])
+
 
   return(
     <>
-   <TranslateList.Provider value={translate}>
+   <AppProvider>
    <BrowserRouter>
    <Header/>
 
@@ -75,7 +63,7 @@ export default function App(){
 
 </BrowserRouter>
 
-   </TranslateList.Provider>
+   </AppProvider>
     </>
   )
 }
