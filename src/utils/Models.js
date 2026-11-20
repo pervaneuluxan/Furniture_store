@@ -6,7 +6,7 @@ export const http = axios.create({
   baseURL: import.meta.env.VITE_API_URL || '/api',
 });
 
-const currentLang = () => window.localStorage.getItem('default_lang') || 'az';
+const currentLang = () => window.localStorage.getItem('default_lang') || 'en';
 
 /** Lists posts of one type: product, blog, slide, partner, gallery, ... → { data, total } */
 export const getPostsByType = (type, { limit, page, sort, category } = {}) =>

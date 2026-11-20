@@ -35,9 +35,9 @@ describe('content', () => {
   });
 
   test('filters by category and sorts by popularity', async () => {
-    const res = await api.get('/api/posts?type=product&category=chairs&sort=popular').expect(200);
+    const res = await api.get('/api/posts?type=product&category=tables&sort=popular').expect(200);
     assert.ok(res.body.data.length > 0);
-    assert.ok(res.body.data.every((p) => p.categories.some((c) => c.slug === 'chairs')));
+    assert.ok(res.body.data.every((p) => p.categories.some((c) => c.slug === 'tables')));
     const views = res.body.data.map((p) => p.views);
     assert.deepEqual(views, [...views].sort((a, b) => b - a));
   });
@@ -49,8 +49,8 @@ describe('content', () => {
   });
 
   test('gets a post by slug and counts the view', async () => {
-    const before = await api.get('/api/posts/oak-lounge-chair').expect(200);
-    const after = await api.get('/api/posts/oak-lounge-chair').expect(200);
+    const before = await api.get('/api/posts/round-cafe-table').expect(200);
+    const after = await api.get('/api/posts/round-cafe-table').expect(200);
     assert.equal(after.body.views, before.body.views + 1);
     await api.get('/api/posts/does-not-exist').expect(404);
   });
@@ -97,7 +97,7 @@ describe('contact form', () => {
 });
 
 describe('orders', () => {
-  const product = () => db.prepare("SELECT id, metas FROM posts WHERE slug = 'oak-lounge-chair'").get();
+  const product = () => db.prepare("SELECT id, metas FROM posts WHERE slug = 'round-cafe-table'").get();
 
   test('prices the order on the server and reduces stock', async () => {
     const { id, metas } = product();

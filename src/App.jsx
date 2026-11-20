@@ -1,50 +1,56 @@
-import { BrowserRouter, Route, Routes } from 'react-router';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import { AppProvider } from './utils/CartContext';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import { ScrollToTop, Toast } from './components/layout/Chrome';
 
-// general components
-import Header from './components/template/Header';
-import Footer from './components/template/Footer';
+import Home from './pages/Home';
+import Shop from './pages/Shop';
+import Product from './pages/Product';
+import Cart from './pages/Cart';
+import Wishlist from './pages/Wishlist';
+import Checkout from './pages/Checkout';
+import Journal from './pages/Journal';
+import JournalPost from './pages/JournalPost';
+import About from './pages/About';
+import Gallery from './pages/Gallery';
+import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
 
-// home page
-import Index from './components/home/Index';
-
-// pages
-import About from './components/pages/About';
-import Shop from './components/pages/Shop';
-import Blog from './components/pages/Blog';
-import Galery from './components/pages/Galery';
-import Contact from './components/pages/Contact';
-import Cart from './components/pages/Cart';
-import Wishlist from './components/pages/Wishlist';
-import Checkout from './components/pages/Checkout';
-
-// posts
-import SingleBlog from './components/posts/SingleBlog';
-import SingleProduct from './components/posts/SingleProduct';
+import './styles/global.css';
+import './styles/layout.css';
+import './styles/pages.css';
 
 export default function App() {
   return (
     <AppProvider>
       <BrowserRouter>
+        <ScrollToTop />
+        <a href="#main" className="visually-hidden">
+          Skip to content
+        </a>
         <Header />
 
-        <main className="full_width">
+        <main id="main">
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/" element={<Home />} />
             <Route path="/shop/:page?" element={<Shop />} />
-            <Route path="/shop_item/:item_link" element={<SingleProduct />} />
-            <Route path="/blog/:page?" element={<Blog />} />
-            <Route path="/read_blog/:blog_link" element={<SingleBlog />} />
-            <Route path="/galery" element={<Galery />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/shop_item/:item_link" element={<Product />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/blog/:page?" element={<Journal />} />
+            <Route path="/read_blog/:blog_link" element={<JournalPost />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/galery" element={<Navigate to="/gallery" replace />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
 
         <Footer />
+        <Toast />
       </BrowserRouter>
     </AppProvider>
   );

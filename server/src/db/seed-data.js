@@ -5,6 +5,9 @@ const img = (name) => `/assets/images/${name}`;
 const lorem =
   'Vestibulum ultricies aliquam convallis. Maecenas ut tellus mi. Proin tincidunt, lectus eu volutpat mattis, ante metus lacinia tellus, vitae condimentum nulla enim bibendum nibh.';
 
+const slugify = (text) =>
+  text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
 const day = 24 * 60 * 60 * 1000;
 const isoDate = (offsetDays) => new Date(Date.now() + offsetDays * day).toISOString().slice(0, 10);
 const activeDiscount = (percent) => ({
@@ -14,28 +17,33 @@ const activeDiscount = (percent) => ({
 });
 
 export const pages = [
-  { slug: 'about', title: 'About Us', featured: img('about_slider1.jpg') },
-  { slug: 'cart', title: 'Cart', featured: img('about_slider2.jpg') },
-  { slug: 'wishlist', title: 'Wishlist', featured: img('about_slider2.jpg') },
-  { slug: 'checkout', title: 'Checkout', featured: img('about_slider1.jpg') },
-  { slug: 'blog', title: 'Blog', content: 'Ideas, trends and stories from our design studio.' },
-  { slug: 'gallery', title: 'Gallery', content: 'A look at the spaces our furniture lives in.' },
-  { slug: 'shop', title: 'Shop' },
+  {
+    slug: 'about',
+    title: 'About Depot',
+    content: 'We choose a small number of pieces each season and show them the way a gallery would: with room around them, so you can see how they are made.',
+    featured: img('about_slider1.jpg'),
+  },
+  { slug: 'cart', title: 'Your cart' },
+  { slug: 'wishlist', title: 'Saved pieces', content: 'Pieces you saved to come back to.' },
+  { slug: 'checkout', title: 'Checkout' },
+  { slug: 'blog', title: 'Journal', content: 'Notes on materials, rooms and the people who make our pieces.' },
+  { slug: 'gallery', title: 'Gallery', content: 'Objects, materials and details from around the studio.' },
+  { slug: 'shop', title: 'Shop', content: 'Every piece currently in the showroom.' },
   {
     slug: 'contact',
-    title: 'Get in touch',
-    content: 'Questions about an order, a product or a custom piece? Write to us and we will reply within one business day.',
-    excerpt: 'Our team is available Monday to Saturday, 10:00–19:00.',
+    title: 'Visit the showroom',
+    content: 'Come and see the pieces in person, or write to us about an order or a custom piece. We reply within one business day.',
+    excerpt: 'Monday to Saturday, 10:00–19:00',
     metas: { map: { lat: 40.3582, lon: 49.8352, zoom: 15 } },
   },
   { slug: 'empty-cart', title: 'Your cart is currently empty.' },
 ];
 
 export const productCategories = [
-  { slug: 'chairs', title: 'Chairs' },
+  { slug: 'seating', title: 'Seating' },
   { slug: 'tables', title: 'Tables' },
-  { slug: 'sofas', title: 'Sofas' },
   { slug: 'lighting', title: 'Lighting' },
+  { slug: 'tableware', title: 'Tableware' },
   { slug: 'decor', title: 'Decor' },
 ];
 
@@ -46,45 +54,57 @@ export const blogCategories = [
   { slug: 'tips', title: 'Tips' },
 ];
 
-const productNames = [
-  ['Oak Lounge Chair', 'chairs', 320],
-  ['Nordic Dining Table', 'tables', 890],
-  ['Velvet Three-Seater', 'sofas', 1450],
-  ['Brass Floor Lamp', 'lighting', 210],
-  ['Ceramic Vase Set', 'decor', 75],
-  ['Walnut Side Table', 'tables', 260],
-  ['Rattan Armchair', 'chairs', 390],
-  ['Linen Corner Sofa', 'sofas', 1990],
-  ['Pendant Globe Light', 'lighting', 180],
-  ['Woven Wall Hanging', 'decor', 95],
-  ['Bar Stool Duo', 'chairs', 240],
-  ['Marble Coffee Table', 'tables', 640],
-  ['Modular Daybed', 'sofas', 1180],
-  ['Desk Task Lamp', 'lighting', 120],
+// One entry per photo, in the order of index_product1.jpg … index_product14.jpg.
+const productList = [
+  ['Rattan Sphere', 'decor', 45, 'Hand-woven rattan', '30 × 30 × 30 cm', 0.6,
+    'A loose weave of natural rattan that throws soft shadows on a shelf or a bare floor.'],
+  ['Dotted Porcelain Cup', 'tableware', 28, 'Porcelain, gold glaze inside', '8 × 8 × 9 cm', 0.2,
+    'Pierced-pattern porcelain with a gold-glazed interior. Hand wash only.'],
+  ['Round Café Table', 'tables', 210, 'Lacquered top, beech legs', '80 × 80 × 72 cm', 9,
+    'A compact table for two with splayed beech legs and a steel cross brace.'],
+  ['Bedside Table', 'tables', 180, 'Painted birch, oak legs', '45 × 35 × 52 cm', 7,
+    'One soft-close drawer with a cut-out pull, so nothing sticks out at night.'],
+  ['Slatted Pendant Lamp', 'lighting', 240, 'Walnut veneer slats', 'Ø 30 × 28 cm', 1.2,
+    'Thin walnut slats spread the light into a warm, even glow over a table.'],
+  ['Stoneware Cup and Saucer', 'tableware', 32, 'Glazed stoneware', 'Ø 9 × 6 cm', 0.4,
+    'A matte grey glaze with a square saucer pressed from the same clay.'],
+  ['Brass Dodecahedron', 'decor', 65, 'Brushed brass', '18 × 18 × 16 cm', 0.5,
+    'An open brass frame for an air plant, a candle or nothing at all.'],
+  ['Iron Teapot', 'tableware', 85, 'Enamelled cast iron, ash handle', '1.2 l', 1.8,
+    'Keeps tea hot for a long time. The ash handle stays cool to the touch.'],
+  ['Round Dining Table', 'tables', 760, 'Solid walnut', 'Ø 110 × 75 cm', 32,
+    'Seats four comfortably. Finished with hard-wax oil that can be refreshed at home.'],
+  ['Black Wall Clock', 'decor', 70, 'Powder-coated steel', 'Ø 30 cm', 0.9,
+    'No numbers, just two thin hands and a silent sweep movement.'],
+  ['Slatted Pendant Lamp, Large', 'lighting', 320, 'Walnut veneer slats', 'Ø 45 × 40 cm', 1.9,
+    'The larger version of our slatted pendant, sized for a dining table or a stairwell.'],
+  ['Stag Head Figure', 'decor', 55, 'Matte black ceramic', '12 × 10 × 24 cm', 0.7,
+    'A small ceramic stag for a bookshelf or a mantelpiece.'],
+  ['Pewter Icosahedron', 'decor', 48, 'Cast pewter', '10 × 10 × 10 cm', 0.9,
+    'Twenty faces of cast pewter, heavy enough to use as a paperweight.'],
+  ['Velvet Lattice Stool', 'seating', 290, 'Velvet seat, brass-finished steel', 'Ø 40 × 45 cm', 6,
+    'A velvet-topped stool on a brass lattice base. Works as a side table too.'],
 ];
 
-export const products = productNames.map(([title, category, price], i) => ({
-  slug: title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+export const products = productList.map(([title, category, price, materials, dimensions, weight, excerpt], i) => ({
+  slug: slugify(title),
   title,
-  excerpt: lorem,
-  content: `${lorem} ${lorem}`,
+  excerpt,
+  content: `${excerpt} ${lorem}`,
   featured: img(`index_product${i + 1}.jpg`),
   categories: [category],
   views: (i * 37) % 100,
   metas: {
     price,
-    stock: 5 + ((i * 3) % 12),
-    weight: 4 + i,
+    stock: i === 9 ? 0 : 2 + ((i * 3) % 12),
+    weight,
+    materials,
+    dimensions,
     discount: 0,
     discount_start_date: null,
     discount_end_date: null,
-    ...(i % 3 === 0 ? activeDiscount(20) : {}),
-    images: [
-      img('singleProduct1.jpg'),
-      img('singleProduct2.jpg'),
-      img('singleProduct3.jpg'),
-      img('singleProduct4.jpg'),
-    ],
+    ...(i % 4 === 2 ? activeDiscount(20) : {}),
+    images: [],
   },
 }));
 
@@ -98,7 +118,7 @@ const blogTitles = [
 ];
 
 export const blogPosts = blogTitles.map(([title, categories], i) => ({
-  slug: title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+  slug: slugify(title),
   title,
   excerpt: lorem,
   content: `${lorem} ${lorem} ${lorem}`,
@@ -157,21 +177,20 @@ export const simplePosts = [
 
 export const menus = {
   main: [
-    ['Home', '/'],
-    ['About', '/about'],
     ['Shop', '/shop'],
-    ['Blog', '/blog'],
-    ['Gallery', '/galery'],
-    ['Contact', '/contact'],
+    ['Gallery', '/gallery'],
+    ['Journal', '/blog'],
+    ['About', '/about'],
+    ['Visit', '/contact'],
   ].map(([title, link]) => ({ title, link })),
   footer: [
-    { title: 'Shop', link: '/shop', children: productCategories.map((c) => ({ title: c.title, link: '/shop' })) },
+    { title: 'Shop', link: '/shop', children: productCategories.map((c) => ({ title: c.title, link: `/shop?category=${c.slug}` })) },
     {
       title: 'Help',
       link: '',
       children: [
         { title: 'Cart', link: '/cart' },
-        { title: 'Wishlist', link: '/wishlist' },
+        { title: 'Saved pieces', link: '/wishlist' },
         { title: 'Contact', link: '/contact' },
       ],
     },
@@ -180,14 +199,81 @@ export const menus = {
       link: '',
       children: [
         { title: 'About', link: '/about' },
-        { title: 'Blog', link: '/blog' },
-        { title: 'Gallery', link: '/galery' },
+        { title: 'Journal', link: '/blog' },
+        { title: 'Gallery', link: '/gallery' },
       ],
     },
   ],
 };
 
+// Interface text. Content (product names, articles) is stored in one language.
 export const translations = {
-  az: { home_title: 'Ana səhifə', add_to_cart: 'Səbətə əlavə et', return_to_shop: 'Mağazaya qayıt' },
-  en: { home_title: 'Home', add_to_cart: 'Add to cart', return_to_shop: 'Return to shop' },
+  en: {
+    home_title: 'Home',
+    add_to_cart: 'Add to cart',
+    added_to_cart: 'Added to your cart',
+    save: 'Save',
+    saved: 'Saved',
+    saved_pieces: 'Saved',
+    cart: 'Cart',
+    checkout: 'Checkout',
+    subtotal: 'Subtotal',
+    shipping: 'Delivery',
+    shipping_free: 'Free',
+    total: 'Total',
+    quantity: 'Quantity',
+    remove: 'Remove',
+    sold_out: 'Sold out',
+    only_left: 'Only {n} left',
+    on_sale: 'On sale',
+    materials: 'Materials',
+    dimensions: 'Dimensions',
+    weight: 'Weight',
+    return_to_shop: 'Return to shop',
+    view_all: 'See every piece',
+    in_showroom: 'In the showroom',
+    empty_cart: 'Your cart is empty.',
+    empty_saved: 'You haven’t saved any pieces yet.',
+    browse_shop: 'Browse the shop',
+    place_order: 'Place order',
+    placing_order: 'Placing order…',
+    send_message: 'Send message',
+    sending: 'Sending…',
+    page_not_found: 'This page isn’t on display.',
+    back_home: 'Go to the homepage',
+  },
+  az: {
+    home_title: 'Ana səhifə',
+    add_to_cart: 'Səbətə əlavə et',
+    added_to_cart: 'Səbətə əlavə edildi',
+    save: 'Yadda saxla',
+    saved: 'Yadda saxlanıb',
+    saved_pieces: 'Seçilmişlər',
+    cart: 'Səbət',
+    checkout: 'Sifarişi rəsmiləşdir',
+    subtotal: 'Ara cəm',
+    shipping: 'Çatdırılma',
+    shipping_free: 'Pulsuz',
+    total: 'Cəmi',
+    quantity: 'Say',
+    remove: 'Sil',
+    sold_out: 'Satılıb',
+    only_left: 'Cəmi {n} ədəd qalıb',
+    on_sale: 'Endirimdə',
+    materials: 'Materiallar',
+    dimensions: 'Ölçülər',
+    weight: 'Çəki',
+    return_to_shop: 'Mağazaya qayıt',
+    view_all: 'Bütün məhsullar',
+    in_showroom: 'Salonda',
+    empty_cart: 'Səbətiniz boşdur.',
+    empty_saved: 'Hələ heç nə yadda saxlamamısınız.',
+    browse_shop: 'Mağazaya bax',
+    place_order: 'Sifariş ver',
+    placing_order: 'Sifariş göndərilir…',
+    send_message: 'Mesajı göndər',
+    sending: 'Göndərilir…',
+    page_not_found: 'Bu səhifə tapılmadı.',
+    back_home: 'Ana səhifəyə qayıt',
+  },
 };
