@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { PageIntro } from '../components/layout/Chrome';
-import { useGlobalContext } from '../utils/CartContext';
+import { useLanguage } from '../context/LanguageContext';
 import { useApi, useTitle } from '../utils/hooks';
 import { apiErrorMessage, getPage, getPostsByType, sendContactMessage } from '../utils/Models';
 
@@ -9,7 +9,7 @@ const LABELS = { name: 'Name', email: 'Email', phone: 'Phone', message: 'Message
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function Contact() {
-  const { t } = useGlobalContext();
+  const { t } = useLanguage();
   const page = useApi(() => getPage('contact'), []);
   const addresses = useApi(() => getPostsByType('address'), []);
   const [values, setValues] = useState(EMPTY);

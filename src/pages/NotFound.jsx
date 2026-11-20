@@ -1,9 +1,9 @@
 import { Link } from 'react-router';
-import { useGlobalContext } from '../utils/CartContext';
+import { useLanguage } from '../context/LanguageContext';
 import { useTitle } from '../utils/hooks';
 
 export default function NotFound() {
-  const { t } = useGlobalContext();
+  const { t } = useLanguage();
   useTitle('Not found');
   return (
     <div className="wrap page">

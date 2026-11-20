@@ -1,5 +1,7 @@
 import { Link } from 'react-router';
-import { useGlobalContext } from '../utils/CartContext';
+import { useCart } from '../context/CartContext';
+import { useLanguage } from '../context/LanguageContext';
+import { useWishlist } from '../context/WishlistContext';
 import { formatPrice } from '../utils/format';
 
 export function Price({ item }) {
@@ -23,7 +25,9 @@ export function Price({ item }) {
 
 /** A product shown like an exhibit: the photo on its plinth, a label underneath. */
 export default function ProductCard({ item }) {
-  const { addBasket, toggleWishlist, isSaved, t } = useGlobalContext();
+  const { add } = useCart();
+  const { isSaved, toggle } = useWishlist();
+  const { t } = useLanguage();
   const href = `/shop_item/${item.slug}`;
   const saved = isSaved(item.id);
   const soldOut = item.stock < 1;
@@ -44,10 +48,10 @@ export default function ProductCard({ item }) {
         {meta && <p className="piece-meta">{meta}</p>}
       </div>
       <div className="piece-actions">
-        <button type="button" onClick={() => addBasket(item.id, 1)} disabled={soldOut}>
+        <button type="button" onClick={() => add(item.id, 1)} disabled={soldOut}>
           {soldOut ? t('sold_out', 'Sold out') : t('add_to_cart', 'Add to cart')}
         </button>
-        <button type="button" aria-pressed={saved} onClick={() => toggleWishlist(item.id)}>
+        <button type="button" aria-pressed={saved} onClick={() => toggle(item.id)}>
           {saved ? t('saved', 'Saved') : t('save', 'Save')}
         </button>
       </div>

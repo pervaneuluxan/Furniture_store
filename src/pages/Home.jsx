@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 import Hero from '../components/Hero';
 import ProductCard from '../components/ProductCard';
-import { useGlobalContext } from '../utils/CartContext';
+import { useLanguage } from '../context/LanguageContext';
 import { formatDate } from '../utils/format';
 import { useApi, useTitle } from '../utils/hooks';
 import { getPage, getPostsByType } from '../utils/Models';
@@ -12,7 +12,7 @@ function HomeHero() {
 }
 
 function OnView() {
-  const { t } = useGlobalContext();
+  const { t } = useLanguage();
   const { data } = useApi(() => getPostsByType('product', { limit: 6, sort: 'popular' }), []);
   const products = data?.data ?? [];
 

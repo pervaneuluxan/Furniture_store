@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
-import { useGlobalContext } from '../../utils/CartContext';
+import { useLanguage } from '../../context/LanguageContext';
+import { useToast } from '../../context/ToastContext';
 
 /** Scrolls to the top on every page change (but not on filter changes within a page). */
 export function ScrollToTop() {
@@ -13,7 +14,7 @@ export function ScrollToTop() {
 
 /** Short confirmation shown after an action such as adding to the cart. */
 export function Toast() {
-  const { toast } = useGlobalContext();
+  const { toast } = useToast();
   if (!toast) return null;
   return (
     <div className="toast" role="status" key={toast.id}>
@@ -25,7 +26,7 @@ export function Toast() {
 
 /** Page heading with breadcrumbs and an optional lead paragraph. */
 export function PageIntro({ title, lead, crumbs = [], children }) {
-  const { t } = useGlobalContext();
+  const { t } = useLanguage();
   return (
     <header className="intro">
       <nav aria-label="Breadcrumb">

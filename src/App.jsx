@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
-import { AppProvider } from './utils/CartContext';
+import AppProviders from './context/AppProviders';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import { ScrollToTop, Toast } from './components/layout/Chrome';
@@ -23,7 +23,7 @@ import './styles/pages.css';
 
 export default function App() {
   return (
-    <AppProvider>
+    <AppProviders>
       <BrowserRouter>
         <ScrollToTop />
         <a href="#main" className="visually-hidden">
@@ -52,6 +52,6 @@ export default function App() {
         <Footer />
         <Toast />
       </BrowserRouter>
-    </AppProvider>
+    </AppProviders>
   );
 }

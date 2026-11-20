@@ -7,6 +7,7 @@ Express 5 + SQLite REST API.
 ├── index.html, src/        frontend (React)
 │   ├── pages/              one component per route
 │   ├── components/         header, footer, product card, shared pieces
+│   ├── context/            language, cart (reducer), saved pieces, toasts
 │   ├── styles/             global.css (design tokens), layout.css, pages.css
 │   └── utils/Models.js     every API call the frontend makes
 ├── public/assets/images/   product and editorial photos

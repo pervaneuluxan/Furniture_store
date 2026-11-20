@@ -6,8 +6,6 @@ export const http = axios.create({
   baseURL: import.meta.env.VITE_API_URL || '/api',
 });
 
-const currentLang = () => window.localStorage.getItem('default_lang') || 'en';
-
 /** Lists posts of one type: product, blog, slide, partner, gallery, ... → { data, total } */
 export const getPostsByType = (type, { limit, page, sort, category } = {}) =>
   http.get('/posts', { params: { type, limit, page, sort, category } });
@@ -24,8 +22,8 @@ export const getMenu = (location) => http.get(`/menus/${encodeURIComponent(locat
 /** Categories for "product" or "blog". */
 export const getCategories = (type) => http.get('/categories', { params: { type } });
 
-/** UI strings for the selected language as { key: text }. */
-export const getTranslate = () => http.get('/translations', { params: { lang: currentLang() } });
+/** UI strings for a language ("en" or "az") as { key: text }. */
+export const getTranslate = (lang) => http.get('/translations', { params: { lang } });
 
 /** Products by id (cart and wishlist) → { data, total } */
 export const getBasket = (ids) => http.get('/products', { params: { ids } });

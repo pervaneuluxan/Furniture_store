@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { Loading, PageIntro } from '../components/layout/Chrome';
-import { useGlobalContext } from '../utils/CartContext';
+import { useCart } from '../context/CartContext';
+import { useLanguage } from '../context/LanguageContext';
 import { formatPrice } from '../utils/format';
 import { useTitle } from '../utils/hooks';
 import { apiErrorMessage, placeOrder } from '../utils/Models';
@@ -30,7 +31,8 @@ function validate(values) {
 }
 
 export default function Checkout() {
-  const { cart, cartLoading, total, clearCart, t } = useGlobalContext();
+  const { lines: cart, loading: cartLoading, total, clear: clearCart } = useCart();
+  const { t } = useLanguage();
   const [values, setValues] = useState(EMPTY);
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);

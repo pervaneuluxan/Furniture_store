@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
-import { useGlobalContext } from '../../utils/CartContext';
+import { useCart } from '../../context/CartContext';
+import { useLanguage } from '../../context/LanguageContext';
+import { useWishlist } from '../../context/WishlistContext';
 import { getMenu } from '../../utils/Models';
 import Logo from '../Logo';
 
@@ -19,7 +21,9 @@ const normaliseMenu = (items) =>
     .map((item) => ({ ...item, link: item.link === '/galery' ? '/gallery' : item.link }));
 
 export default function Header() {
-  const { cartCount, wishlistIds, lang, setLang, t } = useGlobalContext();
+  const { count: cartCount } = useCart();
+  const { ids: wishlistIds } = useWishlist();
+  const { lang, setLang, t } = useLanguage();
   const [menu, setMenu] = useState(FALLBACK_MENU);
   const [open, setOpen] = useState(false);
   const location = useLocation();

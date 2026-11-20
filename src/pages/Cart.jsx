@@ -1,12 +1,14 @@
 import { Link } from 'react-router';
 import { Loading, PageIntro } from '../components/layout/Chrome';
 import { Price } from '../components/ProductCard';
-import { useGlobalContext } from '../utils/CartContext';
+import { useCart } from '../context/CartContext';
+import { useLanguage } from '../context/LanguageContext';
 import { formatPrice } from '../utils/format';
 import { useTitle } from '../utils/hooks';
 
 export default function Cart() {
-  const { cart, cartLoading, total, setItemQty, removeItem, t } = useGlobalContext();
+  const { lines: cart, loading: cartLoading, total, setQty, remove } = useCart();
+  const { t } = useLanguage();
   useTitle(t('cart', 'Cart'));
 
   return (
@@ -49,11 +51,11 @@ export default function Cart() {
                     min="1"
                     max={Math.max(item.stock, 1)}
                     value={item.qty}
-                    onChange={(e) => setItemQty(item.id, Math.min(parseInt(e.target.value, 10) || 1, item.stock))}
+                    onChange={(e) => setQty(item.id, Math.min(parseInt(e.target.value, 10) || 1, item.stock))}
                   />
                 </label>
                 <p className="line-sum price">{formatPrice(item.sum)}</p>
-                <button type="button" className="plain-button line-remove caption" onClick={() => removeItem(item.id)}>
+                <button type="button" className="plain-button line-remove caption" onClick={() => remove(item.id)}>
                   {t('remove', 'Remove')}
                   <span className="visually-hidden"> {item.title}</span>
                 </button>

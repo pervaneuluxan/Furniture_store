@@ -1,12 +1,14 @@
 import { Link } from 'react-router';
 import { LoadError, Loading, PageIntro } from '../components/layout/Chrome';
 import ProductCard from '../components/ProductCard';
-import { useGlobalContext } from '../utils/CartContext';
+import { useLanguage } from '../context/LanguageContext';
+import { useWishlist } from '../context/WishlistContext';
 import { useApi, useTitle } from '../utils/hooks';
 import { getBasket } from '../utils/Models';
 
 export default function Wishlist() {
-  const { wishlistIds, t } = useGlobalContext();
+  const { ids: wishlistIds } = useWishlist();
+  const { t } = useLanguage();
   const ids = wishlistIds.join(',');
   const title = t('saved_pieces', 'Saved');
   useTitle(title);

@@ -2,14 +2,18 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import { LoadError, Loading } from '../components/layout/Chrome';
 import ProductCard, { Price } from '../components/ProductCard';
-import { useGlobalContext } from '../utils/CartContext';
+import { useCart } from '../context/CartContext';
+import { useLanguage } from '../context/LanguageContext';
+import { useWishlist } from '../context/WishlistContext';
 import { useApi, useTitle } from '../utils/hooks';
 import { getPostBySlug, getPostsByType } from '../utils/Models';
 import NotFound from './NotFound';
 
 export default function Product() {
   const { item_link } = useParams();
-  const { addBasket, toggleWishlist, isSaved, t } = useGlobalContext();
+  const { add } = useCart();
+  const { isSaved, toggle } = useWishlist();
+  const { t } = useLanguage();
   const { data: product, loading, error, notFound } = useApi(() => getPostBySlug(item_link), [item_link]);
   const [qty, setQty] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
@@ -48,7 +52,7 @@ export default function Product() {
 
   const addToCart = (e) => {
     e.preventDefault();
-    addBasket(product.id, Math.min(Math.max(qty, 1), product.stock));
+    add(product.id, Math.min(Math.max(qty, 1), product.stock));
   };
 
   return (
@@ -130,7 +134,7 @@ export default function Product() {
               type="button"
               className="button button--ghost"
               aria-pressed={saved}
-              onClick={() => toggleWishlist(product.id)}
+              onClick={() => toggle(product.id)}
             >
               {saved ? t('saved', 'Saved') : t('save', 'Save')}
             </button>
