@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
 import { useGlobalContext } from '../../utils/CartContext';
 import { getMenu } from '../../utils/Models';
+import Logo from '../Logo';
 
 const FALLBACK_MENU = [
   { id: 'shop', title: 'Shop', link: '/shop' },
@@ -50,7 +51,7 @@ export default function Header() {
     <header className="site-header">
       <div className="wrap">
         <Link to="/" className="wordmark" aria-label="Depot, home">
-          DEPOT
+          <Logo />
         </Link>
 
         <nav className="main-nav" aria-label="Main">

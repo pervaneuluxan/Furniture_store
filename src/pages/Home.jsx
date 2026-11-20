@@ -1,60 +1,14 @@
-import { useState } from 'react';
 import { Link } from 'react-router';
+import Hero from '../components/Hero';
 import ProductCard from '../components/ProductCard';
 import { useGlobalContext } from '../utils/CartContext';
 import { formatDate } from '../utils/format';
 import { useApi, useTitle } from '../utils/hooks';
 import { getPage, getPostsByType } from '../utils/Models';
 
-function Hero() {
+function HomeHero() {
   const { data } = useApi(() => getPostsByType('slide'), []);
-  const [index, setIndex] = useState(0);
-  const slides = data?.data ?? [];
-
-  if (slides.length === 0) return <section className="hero hero--empty" aria-hidden="true" />;
-
-  const slide = slides[index % slides.length];
-  const go = (step) => setIndex((i) => (i + step + slides.length) % slides.length);
-
-  return (
-    <section className="hero" aria-roledescription="carousel" aria-label="Featured rooms">
-      <div className="hero-stage">
-        {slides.map((s, i) => (
-          <img
-            key={s.id}
-            src={s.featured}
-            alt=""
-            className="hero-image"
-            data-active={i === index % slides.length}
-            width="1500"
-            height="930"
-          />
-        ))}
-      </div>
-      <div className="hero-text" aria-live="polite">
-        <h1 className="hero-title">{slide.title}</h1>
-        <div className="hero-caption">
-          <p>{slide.excerpt}</p>
-          <Link to="/shop" className="text-link">
-            Shop the collection
-          </Link>
-        </div>
-      </div>
-      {slides.length > 1 && (
-        <div className="hero-controls">
-          <button type="button" className="plain-button" onClick={() => go(-1)}>
-            Previous
-          </button>
-          <span className="count">
-            {(index % slides.length) + 1} of {slides.length}
-          </span>
-          <button type="button" className="plain-button" onClick={() => go(1)}>
-            Next
-          </button>
-        </div>
-      )}
-    </section>
-  );
+  return <Hero slides={data?.data ?? []} />;
 }
 
 function OnView() {
@@ -151,7 +105,7 @@ export default function Home() {
   useTitle('');
   return (
     <div className="wrap page page--home">
-      <Hero />
+      <HomeHero />
       <OnView />
       <AboutBand />
       <LatestJournal />

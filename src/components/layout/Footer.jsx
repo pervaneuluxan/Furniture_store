@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { getMenu, getPage, getPostsByType } from '../../utils/Models';
+import Logo from '../Logo';
 
 const fixLink = (link) => (link === '/galery' ? '/gallery' : link || '/');
 
@@ -23,6 +24,9 @@ export default function Footer() {
       <div className="wrap">
         <div className="footer-grid">
           <div className="footer-visit">
+            <Link to="/" className="footer-logo" aria-label="Depot, home">
+              <Logo />
+            </Link>
             <p>{street ? street.content : 'Depot showroom'}</p>
             {hours && <p>{hours}</p>}
             {others.map((item) => (

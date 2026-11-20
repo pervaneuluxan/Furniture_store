@@ -15,9 +15,47 @@
 }
 
 .wordmark {
-  font-size: 1.375rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 9px;
+  line-height: 1;
+}
+
+.logo-mark {
+  width: 20px;
+  height: 25px;
+  flex: none;
+  transition: transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.logo-mark circle {
+  transition: transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.wordmark:hover .logo-mark circle {
+  transform: translateY(-2px);
+}
+
+.logo-word {
+  font-size: 1.5rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+}
+
+.footer-logo {
+  display: inline-flex;
+  margin-bottom: var(--space-4);
+  color: var(--wall);
+}
+
+.footer-logo:hover {
+  border-bottom: 0 !important;
 }
 
 .main-nav {
@@ -165,7 +203,7 @@
   color: #b9b7b1;
 }
 
-.footer-visit p:first-child {
+.footer-visit .footer-logo + p {
   margin-bottom: var(--space-2);
   color: var(--wall);
   font-size: var(--t-lead);
