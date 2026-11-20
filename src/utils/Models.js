@@ -1,177 +1,41 @@
-import axios from "axios";
-import FormData from "form-data";
+// Thin client for the store REST API (see server/README.md). Every function
+// returns the axios response, so callers read the payload from `res.data`.
+import axios from 'axios';
 
-const l_storage=window.localStorage,
-check_lang=l_storage.getItem('default_lang');
+export const http = axios.create({
+  baseURL: import.meta.env.VITE_API_URL || '/api',
+});
 
-const lang_slug=check_lang;
+const currentLang = () => window.localStorage.getItem('default_lang') || 'az';
 
-export const getPostsByType=async(post_type,post_limit=100,page=1,order_by='')=>{
-    const  form_data = new FormData();
-    form_data.append('get_posts', 'true');
-    form_data.append('post_type', post_type);
-    form_data.append('post_limit', post_limit);
-    form_data.append('lang_slug',lang_slug)
-    form_data.append('order_by', order_by);
-    form_data.append('page', page);
-    
+/** Lists posts of one type: product, blog, slide, partner, gallery, ... → { data, total } */
+export const getPostsByType = (type, { limit, page, sort, category } = {}) =>
+  http.get('/posts', { params: { type, limit, page, sort, category } });
 
+/** A single product or blog post by its slug. */
+export const getPostBySlug = (slug) => http.get(`/posts/${encodeURIComponent(slug)}`);
 
-    return await axios({
-    method: 'post',
-    url: process.env.REACT_APP_API_URL,
-    data : form_data
-    })
-}
-export const getMenusByType=async(menu_type)=>{
-    const  form_data = new FormData();
-    form_data.append('get_menus', 'true');
-    form_data.append('lang_slug',lang_slug);
-    form_data.append('menu_type', menu_type);
+/** A static page (about, cart, checkout, contact, ...) by its slug. */
+export const getPage = (slug) => http.get(`/pages/${encodeURIComponent(slug)}`);
 
-   return await axios({
-    method: 'post',
-    url:process.env.REACT_APP_API_URL,
-    data : form_data
-    })
-}
-export const getPostById=async(post_id)=>{
-    const  form_data = new FormData();
-    form_data.append('get_post', 'true');
-    form_data.append('post_id', post_id);
-    form_data.append('lang_slug',lang_slug);
+/** A navigation menu: "main" or "footer". Items carry nested `subs`. */
+export const getMenu = (location) => http.get(`/menus/${encodeURIComponent(location)}`);
 
-   return await axios({
-    method: 'post',
-    url: process.env.REACT_APP_API_URL,
-    data : form_data
-    })
-}
+/** Categories for "product" or "blog". */
+export const getCategories = (type) => http.get('/categories', { params: { type } });
 
-export const getPostBySlug=async(slug)=>{
-    const  form_data = new FormData();
-    form_data.append('get_post_by_slug', 'true');
-    form_data.append('slug', slug);
-    form_data.append('lang_slug',lang_slug)
+/** UI strings for the selected language as { key: text }. */
+export const getTranslate = () => http.get('/translations', { params: { lang: currentLang() } });
 
-   return await axios({
-    method: 'post',
-    url: process.env.REACT_APP_API_URL,
-    data : form_data
-    })
-}
+/** Products by id (cart and wishlist) → { data, total } */
+export const getBasket = (ids) => http.get('/products', { params: { ids } });
 
-export const getCategories=async(category_type)=>{
-    const  form_data = new FormData();
-    form_data.append('get_categories', 'true');
-    form_data.append('category_type', category_type);
-    form_data.append('lang_slug',lang_slug);
+export const sendContactMessage = ({ name, email, phone, message }) =>
+  http.post('/contact', { name, email, phone, message });
 
-   return await axios({
-    method: 'post',
-    url: process.env.REACT_APP_API_URL,
-    data : form_data
-    })
-}
+/** items: [{ productId, qty }]. The server prices the order and checks stock. */
+export const placeOrder = (customer, items) => http.post('/orders', { customer, items });
 
-export const sendFormData=async(post_data={})=>{
-    const  form_data = new FormData();
-    
-    for(let key in post_data){
-        form_data.append(key,post_data[key]);
-    }
-
-   return await axios({
-    method: 'post',
-    url: process.env.REACT_APP_API_URL,
-    data : form_data
-    })
-}
-
-export const getTranslate=async()=>{
-    const  form_data = new FormData();
-    form_data.append('get_translate', 'true');
-    form_data.append('lang_slug',lang_slug);
-  
-   return await axios({
-    method: 'post',
-    url:process.env.REACT_APP_API_URL,
-    data : form_data
-    })
-}
-
-export const getBasket=async(ids)=>{
-    const  form_data = new FormData();
-    form_data.append('get_basket', 'true');
-    form_data.append('ids', ids);
-    form_data.append('lang_slug',lang_slug);
-
-  
-   return await axios({
-    method: 'post',
-    url:process.env.REACT_APP_API_URL,
-    data : form_data
-    })
-}
-
-
-export const addBasket=(product_id,count)=>{
-  
-    const basket_key='basket';
-    const checkBasket=l_storage.getItem(basket_key);
-    
-
-    if(checkBasket){
-          // Artiq sebetde mehsul var
-       const old_data=JSON.parse(l_storage.getItem(basket_key));
-
-      old_data[product_id]=count
-
-       l_storage.setItem(basket_key,JSON.stringify(old_data))
-
-    }else{
-      // Birinci defe elavə edilir
-
-      l_storage.setItem(basket_key,JSON.stringify(
-       
-        {[product_id]:count}
-        
-        ))
-
-    }
-    // window.location.href=window.location.href;
-   
-  
-   
-}
-
-export const addWishlist=(product_id)=>{
-    const  l_storage=window.localStorage;
-  
-    const wishlist_key="wishlist";
-      
-    const checkWishlist=l_storage.getItem(wishlist_key);
-    
-
-    if(checkWishlist){
-       
-       const old_data=JSON.parse(l_storage.getItem(wishlist_key));
-
-      old_data[product_id]=product_id;
-
-       l_storage.setItem(wishlist_key,JSON.stringify(old_data))
-
-    }else{
-      // Birinci defe
-
-      l_storage.setItem(wishlist_key,JSON.stringify(
-       
-        {[product_id]:product_id}
-        
-        ))
-
-    }
-    alert('Mehsul');
-    
-}
- 
+/** The server's error message for a failed request, or a generic fallback. */
+export const apiErrorMessage = (error) =>
+  error?.response?.data?.error || 'Something went wrong. Please try again.';

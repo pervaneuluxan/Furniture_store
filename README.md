@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# Depot Furniture Store
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A furniture shop with a React 19 frontend (Vite, React Router 7) and an
+Express 5 + SQLite REST API.
 
-## Available Scripts
+```
+├── index.html, src/        frontend (React)
+│   └── utils/Models.js     every API call the frontend makes
+├── public/assets/          legacy CSS, jQuery plugins and images
+└── server/                 backend (Express + SQLite)
+    ├── src/app.js          app setup: middleware and routers
+    ├── src/routes/         HTTP endpoints
+    ├── src/services/       queries, pricing and order logic
+    ├── src/db/             schema, starter content, reset script
+    └── test/               API tests
+```
 
-In the project directory, you can run:
+## Getting started
 
-### `npm start`
+Requires Node.js 20.19 or newer.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+npm install
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+npm run dev
+```
 
-### `npm test`
+`npm install` also installs the server's dependencies. `npm run dev` starts the
+API on http://localhost:4000 and the site on http://localhost:3000. Vite
+forwards `/api` requests to the API, so no CORS setup is needed in development.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The first API start creates `server/data/store.db` with starter content. To
+throw away local changes (orders, messages, stock) and start again:
 
-### `npm run build`
+```bash
+npm run seed --prefix server
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Scripts
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | API and site together, with reload on change |
+| `npm run build` | Production build of the site into `dist/` |
+| `npm run server` | API only, without reload |
+| `npm test` | Frontend tests (Vitest) and API tests (`node:test`) |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Configuration
 
-### `npm run eject`
+| Variable | Where | Default |
+| --- | --- | --- |
+| `VITE_API_URL` | `.env` (frontend, build time) | `/api` |
+| `PORT` | API | `4000` |
+| `DB_PATH` | API | `server/data/store.db` |
+| `CORS_ORIGINS` | API, comma-separated | `http://localhost:3000` |
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## API
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+All responses are JSON. Errors look like `{ "error": "...", "details": {...} }`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+| Method | Path | Description |
+| --- | --- | --- |
+| GET | `/api/health` | Health check |
+| GET | `/api/posts?type=&limit=&page=&sort=&category=` | List content → `{ data, total, page, limit }` |
+| GET | `/api/posts/:slug` | One product or blog post (counts a view) |
+| GET | `/api/pages/:slug` | Page content: `about`, `cart`, `wishlist`, `checkout`, `blog`, `gallery`, `shop`, `contact`, `empty-cart` |
+| GET | `/api/products?ids=1,2` | Products for the cart or wishlist → `{ data, total }` |
+| GET | `/api/categories?type=product\|blog` | Categories |
+| GET | `/api/menus/main\|footer` | Menu items with nested `subs` |
+| GET | `/api/translations?lang=az\|en` | UI strings `{ key: text }` |
+| POST | `/api/contact` | `{ name, email, phone, message }` → `201 { id }` |
+| POST | `/api/orders` | `{ customer, items: [{ productId, qty }] }` → `201 { id, total, items }` |
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `type`: `product`, `blog`, `slide`, `partner`, `gallery`, `about-tab`,
+  `testimonial`, `team-member`, `address`.
+- `sort`: `default`, `newest`, `popular`, `price_asc`, `price_desc`.
+- Products include `price`, `discount_price`, `has_discount` and `stock`,
+  worked out on the server from `metas` (discounts apply between
+  `discount_start_date` and `discount_end_date`, both inclusive).
+- Orders are priced on the server and reduce stock in the same transaction; an
+  order for more than the stock returns `409`.
+- `customer` needs `firstName`, `lastName`, `email`, `phone`, `country`,
+  `postCode`; `company` is optional.
